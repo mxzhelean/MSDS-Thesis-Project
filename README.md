@@ -1,4 +1,4 @@
-> Master's Thesis Project in Data Science & Economics  
+> Master's Thesis Project in Computing & Data Science <br>
 > **Author:** Mengxi (Elean) Zhong <br>
 > **Institution:** Boston University
 
