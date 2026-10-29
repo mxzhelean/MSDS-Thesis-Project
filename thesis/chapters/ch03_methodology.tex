@@ -1,0 +1,62 @@
+% ============================================================
+%  chapters/ch03_methodology.tex — Chapter 3: Methodology
+% ============================================================
+
+\chapter{Methodology}
+% ------------------------------------------------------------
+\section{Research Design Overview}
+This study employs an upstream computational audit design centered on stateless API execution to quantify model-level system bias across commercial foundation models.
+
+\section{Task-Anchored Matrix Operationalization}
+Adopting \cite{Jain2025} task taxonomy to operationalize Graduate Teaching Assistant (GTA) workflows across two distinct problem spaces:
+
+\subsection{Task 1 --- Objective Context}
+\begin{itemize}
+  \item \textbf{Category D:} Problem-Solving Objective.
+  \item \textbf{Scenario:} Routine Concept Explanation (e.g., explaining the K-Nearest Neighbors [KNN] algorithm in an introductory Data Science course).
+  \item \textbf{Target State:} Fixed core ground truth. Diversity is defined strictly by pedagogical explanatory variety (diverse analogies and framings) while maintaining core domain accuracy without conceptual distortion.
+\end{itemize}
+
+\subsection{Task 2 --- Subjective Context}
+\begin{itemize}
+  \item \textbf{Category E:} Problem-Solving Subjective.
+  \item \textbf{Scenario:} Open-Ended Research Scoping (e.g., guiding semester project ideation and research question formulation for an introductory AI Ethics course).
+  \item \textbf{Target State:} Open, value-laden solution space. Diversity is defined by perspective pluralism (generating distinct, personalized analytical angles) versus epistemic enclosure (collapsing student ideation into a single, statistically dominant narrative).
+\end{itemize}
+
+\section{Model and Experimental Setup}
+
+\subsection{Foundation Model Pool and Selection Rationale}
+Leading commercial LLMs representing dominant technological baselines were selected: OpenAI GPT-4o, Anthropic Claude 3.5 Sonnet, and Google Gemini 1.5 Pro.
+
+\subsection{Prompt Standardization Protocol}
+Adopting \cite{Sahoo2024} Zero-Shot Task Framing Protocol to isolate model-level architectural bias from prompt engineering variation.
+
+\subsection{Sampling Matrix and Session Isolation}
+The experimental matrix comprises:
+\begin{equation}
+3 \text{ Models} \times 2 \text{ Tasks} \times 50 \text{ Iterations} = 300 \text{ Independent API Outputs}
+\end{equation}
+Stateless API execution with zero context memory was enforced to guarantee independent sample generation.
+
+\subsection{Hyperparameter Standardization Protocol}
+Decoding parameters (Temperature, $\text{Top\_p}$, and Max Tokens) were strictly controlled across all model endpoints to decouple generation stochasticity from systemic model bias, ensuring strict cross-architecture comparability.
+
+\section{Data Preprocessing and Corpus Construction}
+Preprocessing pipeline includes Markdown stripping, token normalization, and structured JSON vector corpus preparation.
+
+\section{Quantitative and Computational Metrics}
+
+\subsection{Measuring Homogenization and Diversity Collapse (RQ2/H2)}
+High-dimensional Sentence Embedding Variance (Cosine Distance) combined with BERTopic Cluster Diversity quantifies semantic vector space shrinkage in Task 2.
+
+\subsection{Measuring Explanatory Variety and Perspective Coverage (RQ1/H1)}
+Quantitative Content Analysis (QCA) tracks the ratio of non-dominant, localized research perspectives versus standardized academic tropes across tasks.
+
+\section{Analytical Pipeline and Reproducibility Protocol}
+
+\subsection{Pipeline Steps}
+Automated API Execution $\rightarrow$ Text Preprocessing $\rightarrow$ Vector Corpus Construction $\rightarrow$ High-Dimensional Clustering \& Statistical Variance Analysis.
+
+\subsection{Validity and Reproducibility Safeguards}
+Execution is constrained within tightly defined temporal windows to mitigate silent back-end model updates by proprietary providers, with full raw JSON archiving for complete auditability.

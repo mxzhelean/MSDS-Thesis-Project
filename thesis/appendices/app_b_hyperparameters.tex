@@ -1,0 +1,25 @@
+% ============================================================
+%  appendices/app_b_hyperparameters.tex — Appendix B: Hyperparameters
+% ============================================================
+
+\chapter{Hyperparameter Configuration Table}
+\label{app:hyperparameters}
+
+% [Drafting guide: Include complete configuration parameters across OpenAI, Anthropic, and Google API endpoints.]
+
+\section{\textcolor{red}{Template: Endpoint Decoding Parameters}}
+
+\begin{table}[htbp]
+  \centering
+  \caption{Standardized Endpoint Decoding Hyperparameters}
+  \label{tab:decoding_params}
+  \begin{tabular}{lcccc}
+    \hline
+    \textbf{Model Endpoint} & \textbf{Temperature ($T$)} & \textbf{Top\_p} & \textbf{Max Tokens} & \textbf{Seed / State} \\
+    \hline
+    OpenAI GPT-4o          & 0.7 & 0.9 & 1000 & Stateless \\
+    Anthropic Claude 3.5   & 0.7 & 0.9 & 1000 & Stateless \\
+    Google Gemini 1.5 Pro  & 0.7 & 0.9 & 1000 & Stateless \\
+    \hline
+  \end{tabular}
+\end{table}

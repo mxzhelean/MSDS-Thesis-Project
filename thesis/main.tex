@@ -1,0 +1,160 @@
+% ============================================================
+%  main.tex — Master Thesis Main Entry Point
+%  Mapped from main_old.tex (APA 7th Edition Style)
+% ============================================================
+
+\documentclass[12pt, letterpaper]{report}
+\input{config/packages}
+% ── Load Global Configuration & Packages ────────────────────
+% (If you keep packages in a separate file, use \input{config/packages}.
+%  The configurations below maintain full fidelity with main_old.tex)
+
+% \usepackage[T1]{fontenc}
+% \usepackage[utf8]{inputenc}
+% \usepackage{lmodern}
+% \usepackage{amsmath, amssymb}
+
+% % Page Geometry (1 inch on all margins)
+% \usepackage[
+%   top    = 1in,
+%   bottom = 1in,
+%   left   = 1in,
+%   right  = 1in
+% ]{geometry}
+
+% Line Spacing & Paragraph Formatting
+% \usepackage{setspace}
+% \doublespacing          % APA 7th double spacing
+% \setlength{\parindent}{0.5in}
+% \setlength{\parskip}{0pt}
+
+% % Section Heading Formats (APA 7th Compliant)
+% \usepackage{titlesec}
+
+% Chapter Heading Formatting
+% \titleformat{\chapter}[display]
+%   {\normalfont\large\bfseries\centering}
+%   {\chaptertitlename\ \thechapter}
+%   {0.5em}
+%   {\large}
+% \titlespacing*{\chapter}{0pt}{-10pt}{20pt}
+
+% % Section (X.X) Formatting
+% \titleformat{\section}
+%   {\normalfont\large\bfseries\centering}
+%   {\thesection}
+%   {1em}
+%   {}
+
+% % Subsection (X.X.X) Formatting
+% \titleformat{\subsection}
+%   {\normalfont\normalsize\bfseries}
+%   {\thesubsection}
+%   {1em}
+%   {}
+
+% % Subsubsection Formatting
+% \titleformat{\subsubsection}
+%   {\normalfont\normalsize\bfseries\itshape}
+%   {\thesubsubsection}
+%   {1em}
+%   {}
+
+% Lists Setup
+% \usepackage{enumitem}
+% \setlist[itemize]{leftmargin=0.5in, itemsep=0pt}
+% \setlist[enumerate]{leftmargin=0.5in, itemsep=0pt}
+
+% % Hyperlinks Setup
+% \usepackage[
+%   colorlinks = true,
+%   linkcolor  = black,
+%   citecolor  = black,
+%   urlcolor   = blue
+% ]{hyperref}
+
+% % Footnotes Formatting
+% \usepackage[bottom, hang]{footmisc}
+% \setlength{\footnotemargin}{0.5em}
+
+% APA 7th References via biblatex
+% \usepackage[
+%   backend   = biber,
+%   style     = apa,
+%   sortcites = true,
+%   sorting   = nyt
+% ]{biblatex}
+% \DeclareLanguageMapping{american}{american-apa}
+
+% Add bibliography resource file
+\addbibresource{references.bib}
+
+% ── Optional Selective Compilation Switch ──────────────────
+% Uncomment the line below to compile ONLY a specific chapter for faster execution
+% \includeonly{chapters/ch03_methodology}
+
+% ============================================================
+\begin{document}
+% ============================================================
+
+% ── FRONT MATTER (Roman Numeral Page Numbers) ───────────────
+\pagenumbering{roman}
+
+% Title Page
+\input{frontmatter/titlepage}
+
+% Abstract
+\input{frontmatter/abstract}
+
+% Acknowledgments
+\input{frontmatter/acknowledgments}
+
+% Automated Table of Contents & Lists
+\tableofcontents
+\newpage
+
+\listoffigures
+\addcontentsline{toc}{chapter}{List of Figures}
+\newpage
+
+\listoftables
+\addcontentsline{toc}{chapter}{List of Tables}
+\newpage
+
+% List of Abbreviations
+\input{frontmatter/abbreviations}
+
+% ── MAIN BODY (Arabic Numeral Page Numbers) ─────────────────
+\clearpage
+\pagenumbering{arabic}
+
+% Included Chapter Files
+\include{chapters/ch01_introduction}
+\include{chapters/ch02_literature_review}
+\include{chapters/ch03_methodology}
+\include{chapters/ch04_results}
+\include{chapters/ch05_discussion}
+\include{chapters/ch06_conclusion}
+
+% ── BACK MATTER ─────────────────────────────────────────────
+\singlespacing
+% 1. 强制在正文未引用时也列出 .bib 中的所有文献（撰写草稿阶段使用，正式提交前可移除）
+\nocite{*}
+
+% 2. 确保目录跳转准确指向参考文献首页（配合 hyperref）
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{References}
+
+% 3. 打印参考文献列表
+\printbibliography[title={References}]
+
+% ── APPENDICES ──────────────────────────────────────────────
+\appendix
+\include{appendices/app_a_prompts}
+\include{appendices/app_b_hyperparameters}
+\include{appendices/app_c_raw_outputs}
+\include{appendices/app_d_bertopic}
+\include{appendices/app_e_statistical_tables}
+
+\end{document}

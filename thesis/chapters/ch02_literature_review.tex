@@ -1,0 +1,41 @@
+% ============================================================
+%  chapters/ch02_literature_review.tex — Chapter 2: Literature Review
+% ============================================================
+
+\chapter{Literature Review and Theoretical Framework}
+% ------------------------------------------------------------
+\section{LLMs in Higher Education: Opportunities and Risks}
+Deployment patterns across higher education institutions highlight an increasing tension between rapid administrative efficiency gains and the core educational mission. Unchecked technological adoption threatens to substitute open intellectual inquiry with automated text generation, creating governance gaps regarding pedagogical integrity.
+
+\section{Output Homogenization in Large Language Models}
+Algorithmic homogenization and epistemic bias in LLMs are grounded in recent computational research:
+\begin{itemize}
+  \item \textbf{Statistical Pattern Privilege:} \cite{Bender2021} demonstrate that large language models act as ``stochastic parrots,'' inherently privileging statistically frequent training patterns at the expense of output diversity.
+  \item \textbf{Task-Dependent Homogenization:} \cite{Jain2025} establish that LLM output homogenization is strongly task-dependent, establishing that evaluating AI integration at a broad job-title level is insufficient and advocating for task-anchored decomposition.
+  \item \textbf{AI Exposure Effects on Diversity:} \cite{Ashkinaze2025} examine AI exposure effects on collective idea diversity in dynamic settings, differentiating passive exposure from active human-AI co-creation.
+  \item \textbf{Passive Exposure Paradigm:} Demonstrates how uncritical acceptance of AI-generated ideas alters conceptual baselines in educational environments without deliberate student engagement.
+\end{itemize}
+
+\section{The Graduate Teaching Assistant in Higher Education}
+\cite{Bousquet2008} and \cite{Muzaka2009} frame GTAs as key instructional labor occupying the primary academic middle tier in higher education. Their responsibilities span from routine grading and explanation to open-ended student mentorship, providing an ideal real-world context for testing task-dependent LLM output shifts.
+
+\section{Prompt Engineering and Zero-Shot Methods}
+Standardization of prompt input is critical to isolating architectural model bias. \cite{Sahoo2024} synthesize prompt engineering techniques, establishing protocols for Zero-Shot Task Framing that eliminate prompt engineering variation.
+
+\section{Computational Text Analysis Methods}
+Quantifying semantic diversity at scale utilizes high-dimensional sentence embeddings (cosine distance) to measure vector space variance, BERTopic modeling for cluster-level diversity quantification, and Quantitative Content Analysis (QCA) for perspective coverage tracking.
+
+\section{Theoretical Framework}
+This research synthesizes critical educational theory and sociology of knowledge:
+\begin{itemize}
+  \item \textbf{Epistemic Enclosure:} \cite{Warren2020} conceptualize Epistemic Enclosure as the progressive narrowing of valid knowledge systems into intellectual monocultures.
+  \item \textbf{Multiplicity and Horizontality:} Educational theory asserts that transformative learning requires both Multiplicity (plurality of perspectives) and Horizontality (validation of lived experiences) to counter monocultural defaults \cite{Warren2020}.
+  \item \textbf{Epistemologies of the South \& Epistemicide:} \cite{Santos2014} provides the critical framework of false universalism, showing how dominant knowledge systems present localized, Western-centric perspectives as universal objective truth.
+  \item \textbf{Situated Knowledges:} \cite{Haraway1988} critiques machine neutrality, demonstrating that all knowledge production is partial and perspective-dependent.
+  \item \textbf{Knowledge Structures \& Authority:} \cite{Maton2014} examines how automated authority alters institutional mechanisms of knowledge validation.
+  \item \textbf{Two-Dimensional Audit Model:} Decouples Dimension A (machine-generated epistemic environment) from Dimension B (student cognitive agency) to isolate system bias before human-in-the-loop testing.
+  \item \textbf{Operationalization:} Multiplicity and Horizontality are operationalized directly as vector space spread and topical cluster diversity.
+\end{itemize}
+
+\section{Research Gap} % and Study Positioning
+Educational research on Generative AI relies heavily on qualitative or downstream human-subject studies (Dimension B), which blur the line between student learning agency and model-level bias. This work bridges data science and critical educational theory by conducting an upstream computational audit (Dimension A), establishing an objective, scalable system baseline before introducing human-in-the-loop complexity.
