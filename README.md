@@ -1,7 +1,12 @@
-# MSDS Thesis Project
+> Master's Thesis Project in Data Science & Economics  
+> **Author:** Mengxi (Elean) Zhong <br>
+> **Institution:** Boston University
+
 # __A Task-Anchored Audit of Epistemic Enclosure in Higher Education LLMs__
 
 This repository contains the complete computational pipeline, raw data corpora, and modular LaTeX source for the Master's Thesis by **Mengxi Zhong** (Master of Science in Data Science, Boston University).
+
+The project adopts a modular, reproducible research architecture: the root directory manages data extraction, modeling, and analysis pipelines, while the nested `thesis/` directory manages the academic publication document synchronized with Overleaf.
 
 ---
 
@@ -60,25 +65,104 @@ MSDS-Thesis-Project/
 ```
 
 ---
+## Git & Overleaf Synchronization Workflow
+
+This repository uses a **nested architecture** where the root directory manages the entire data science project (`src/`, `data/`, pipelines), while the `thesis/` subfolder houses the modular LaTeX codebase synchronized with Overleaf.
+
+```text
+┌─────────────────────────────────────────────────────────────┐
+│                    GitHub Root Repository                   │
+│  ├── data/                                                  │
+│  ├── src/                                                   │
+│  └── thesis/ ─── (Git Subtree) ───► Overleaf Remote (main)  │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### 1. Authentication Setup (Overleaf)
+
+Overleaf requires a Git Authentication Token for CLI operations.
+
+Go to Overleaf Account Settings $\rightarrow$ Git Authentication Tokens $\rightarrow$ Create Token.
+
+Configure the dual-remote locally:
+
+```bash
+git remote add overleaf https://git:<YOUR_OVERLEAF_TOKEN>@[git.overleaf.com/](https://git.overleaf.com/)<YOUR_PROJECT_ID>
+```
+
+### 2. Daily Development & Sync Operations
+
+📥 Pulling Thesis Updates from Overleaf
+
+To fetch and merge edits made directly in the Overleaf web editor into the local `thesis/` folder:
+
+```bash
+git subtree pull --prefix=thesis overleaf main --squash
+```
+
+📤 Pushing Local Thesis Changes to Overleaf
+
+To sync local LaTeX edits or newly generated experiment figures (`thesis/figures/`) up to Overleaf:
+
+```bash
+git subtree push --prefix=thesis overleaf main
+```
+
+🌐 Pushing Full Project to GitHub
+
+To archive the complete end-to-end project (code, data pipelines, and thesis subfiles):
+
+```bash
+git add .
+git commit -m "docs/results: update analysis pipeline and corresponding thesis chapters"
+git push origin main
+```
+
+---
 
 ## Reproduction & Compilation Guide
 
-### 1. Compiling the LaTeX Manuscript
+### 1. Environment Setup
 
-The LaTeX project is decoupled for fast modular compilation. From the `thesis/` directory:
+Clone the repository and set up the Python environment for running experiment code:
 
 ```bash
-cd thesis/
+git clone [https://github.com/YOUR_USERNAME/MSDS-Thesis-Project.git](https://github.com/YOUR_USERNAME/MSDS-Thesis-Project.git)
+cd MSDS-Thesis-Project
 
-# Standard multi-pass build (PDFLaTeX + Biber)
-pdflatex main.tex
-biber main
-pdflatex main.tex
-pdflatex main.tex
+# Create and activate virtual environment
+python -m venv .venv
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
 
-# Or using latexmk (Automated)
-latexmk -pdf -bibtex main.tex
+# Install dependencies
+pip install -r requirements.txt
 ```
+
+### 2. Compiling the LaTeX Manuscript
+
+You can edit and compile the thesis either via Overleaf or locally.
+
+- **Option A:** Overleaf (Recommended for Writing)
+
+Set thesis/main.tex as the Main Document in the Overleaf project settings.
+
+
+- **Option B:** Local Compilation
+
+The LaTeX project is decoupled for fast modular compilation. To compile locally from the CLI, navigate to the `thesis/` directory or specify the root file:
+
+```bash
+# Navigate to the thesis directory
+cd thesis
+
+# Compile using latexmk with Biber backend
+latexmk -pdf -bibtex main.tex
+
+# Clean temporary build artifacts
+latexmk -c
+```
+
+If using VS Code with LaTeX Workshop, open `thesis/main.tex` and trigger `Build LaTeX project`.
 
 > **Tip for Overleaf / Fast Iteration:** To compile a single chapter in isolation while maintaining cross-references and page numbers, uncomment `\includeonly{chapters/ch03_methodology}` in `thesis/main.tex`.
 
@@ -104,6 +188,8 @@ python src/main_pipeline.py
 
 ## Citation & License
 
+This repository is maintained for academic research purposes. All source code in `src/` is open under the MIT License, while thesis text content in `thesis/` remains copyrighted by the author.
+
 If you reference this dataset, codebase, or theoretical framework in your research, please cite:
 
 ```bibtex
@@ -111,7 +197,7 @@ If you reference this dataset, codebase, or theoretical framework in your resear
   author  = {Zhong, Mengxi},
   title   = {A Task-Anchored Audit of Epistemic Enclosure in Higher Education {LLMs}},
   school  = {Boston University},
-  department = {Department of Computer Science / Data Science},
+  department = {Department of Computing & Data Science},
   year    = {2026},
   month   = {September}
 }
