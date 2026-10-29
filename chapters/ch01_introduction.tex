@@ -1,0 +1,35 @@
+% ============================================================
+%  chapters/ch01_introduction.tex — Chapter 1: Introduction
+% ============================================================
+
+% ------------------------------------------------------------
+\chapter{Introduction}
+% ------------------------------------------------------------
+\section{Motivation and Context}
+The rapid deployment of Large Language Model (LLM) powered infrastructure in higher education is driven primarily by efficiency gains. The unchecked integration of technology into higher education presents a significant challenge for institutions dedicated not only to the dissemination of knowledge but also to nurturing critical thinking, diverse perspectives, and intellectual empowerment. This vital mission is compromised when the complexities of education are reduced to mere data transmission.
+
+\section{Problem Statement and Research Questions}
+By inherently privileging statistically frequent patterns \cite{Bender2021}, LLMs risk functioning as ``standardizing engines'' that compress diverse explanatory styles, localized knowledge systems, and unique student perspectives into a narrow, homogenized norm. In educational theory, this phenomenon aligns with Epistemic Enclosure \cite{Warren2020}: the creation of an intellectual monoculture where an automated system progressively narrows what counts as valid, acceptable knowledge. The study of the false assumption of absolute neutrality for AI emerges, where the AI represents its Western-dominant training data as a single universal truth rather than one viewpoint among many.
+
+To evaluate these dynamics empirically within academic workflows, this study establishes two central research questions and hypotheses:
+\begin{itemize}
+  \item \textbf{RQ1 (Core Domain Accuracy and Explanatory Variety):} In routine, objective tasks with standardized core concepts (Task 1), to what extent do LLMs maintain core domain accuracy while offering pedagogical explanatory variety without introducing conceptual distortion?
+  \begin{itemize}
+    \item \textbf{H1 (Explanatory Flexibility without Factual Drift):} For Task 1, LLM outputs will show strong structural and conceptual alignment around established academic facts, with output variance manifesting primarily as constructive explanatory variety (diverse analogies and framings) rather than factual distortion.
+  \end{itemize}
+  \item \textbf{RQ2 (Perspective Pluralism vs. Output Homogenization):} In subjective Task 2, to what extent do LLMs foster perspective pluralism, as opposed to enforcing systemic homogenization through standardized output templates?
+  \begin{itemize}
+    \item \textbf{H2 (Algorithmic Homogenization and Monocultural Collapse):} For Task 2, LLM outputs will exhibit a certain degree of cross-iteration and cross-architecture homogenization, collapsing open-ended academic scoping into a narrow baseline that systematically erases non-dominant frameworks.
+  \end{itemize}
+\end{itemize}
+
+\section{Scope and Boundary Conditions}
+To map the theoretical critiques of Epistemic Enclosure onto LLMs' algorithmic risk as ``standardizing engines'' in higher education contexts, this study establishes three specific boundary conditions:
+\begin{enumerate}
+  \item \textbf{Dimension A Upstream Audit:} Research must first decouple the upstream AI system output (Dimension A: the machine-generated epistemic environment \cite{Santos2014}) from the downstream user process (Dimension B: the student's cognitive agency). While user-side cognitive consequences are critical, measuring human learning without first auditing the system artifact introduces severe confounding variables.
+  \item \textbf{GTA Workflows as Empirical Context:} To ground this upstream system audit in realistic educational practice, this research is contextualized within the workflows of Graduate Teaching Assistants (GTAs). As the primary academic middle tier, GTAs perform a uniquely broad spectrum of duties, from highly objective, routine concept explanations to highly subjective, open-ended project mentorship \cite{Bousquet2008, Muzaka2009}. Because of this extreme task variance, evaluating LLM integration at a broad ``job title'' level fails to capture how AI output behavior dynamically shifts across distinct real-world tasks: output homogenization is strictly task-dependent \cite{Jain2025}.
+  \item \textbf{Single-Turn Stateless API Execution:} Using single-turn stateless API executions establishes a controlled methodological boundary that isolates baseline architectural model behavior from conversational context drift and prompt engineering variations.
+\end{enumerate}
+
+\section{Thesis Organization}
+This thesis is organized into six chapters. Chapter 2 synthesizes relevant literature and establishes the theoretical framework governing epistemic enclosure. Chapter 3 details the task-anchored matrix operationalization, foundation model setup, and computational metrics. Chapter 4 presents the empirical results across Task 1 and Task 2. Chapter 5 interprets the findings and outlines study limitations. Finally, Chapter 6 discusses policy implications and future research directions.
