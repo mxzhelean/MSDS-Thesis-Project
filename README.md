@@ -1,10 +1,10 @@
-> Master's Thesis Project in Computing & Data Science <br>
-> **Author:** Mengxi (Elean) Zhong <br>
-> **Institution:** Boston University
-
 # __A Task-Anchored Audit of Epistemic Enclosure in Higher Education LLMs__
 
-This repository contains the complete computational pipeline, raw data corpora, and modular LaTeX source for the Master's Thesis by **Mengxi Zhong** (Master of Science in Data Science, Boston University).
+> Master's Thesis Project in Computing & Data Science  
+> __Author:__ Mengxi (Elean) Zhong  
+> __Institution:__ Boston University
+
+This repository contains the complete computational pipeline, raw data corpora, and modular LaTeX source.
 
 The project adopts a modular, reproducible research architecture: the root directory manages data extraction, modeling, and analysis pipelines, while the nested `thesis/` directory manages the academic publication document synchronized with Overleaf.
 
@@ -63,11 +63,12 @@ MSDS-Thesis-Project/
         ├── app_d_bertopic.tex     # Appendix D: BERTopic Cluster Keyword Detail Tables
         └── app_e_stats.tex        # Appendix E: Complete Statistical ANOVA Tables
 ```
+
 ---
 
 ## Research Roadmap & Milestones (Nov – Dec 2026)
 
-### Sprint Planner 🗓️ 
+### Sprint Planner 🗓️
 
 ```mermaid
 gantt
@@ -106,26 +107,25 @@ timeline
         18 : Proposed thesis defense
 ``` -->
 
-
-
 ### Deliverables Matrix
 
 | Target Date | Milestone / Objective | Status | Key Deliverables / Artifacts |
 | :--- | :--- | :---: | :--- |
-| **Nov 22** | Pipeline setup report & pilot evaluation | ✅ Completed | `scripts/pipeline/`, pilot metric report |
-| **Nov 25** | Revised draft with 15–20 data examples | 🔄 In Progress | Chapter 2–3 draft, pivot sample charts |
-| **Nov 29** | Full pipeline execution & corpus results | ⏳ Queued | Statistical outputs, table placeholders |
-| **Dec 01** | Results chapter draft | ⏳ Queued | Draft Chapter 4 (Results) |
-| **Dec 04** | Full-picture draft submission | ⏳ Queued | Submission to Advisory Board |
-| **Dec 06** | Presentation outline & code freeze | ⏳ Queued | Public reproducible release |
-| **Dec 10** | Presentation slides draft | ⏳ Queued | Slide deck v1 |
-| **Dec 13** | Final thesis assembly | ⏳ Queued | Complete thesis PDF |
-| **Dec 18** | **Thesis Defense** | 🎯 Goal | Final slides & defense recording |
+| __Nov 22__ | Pipeline setup report & pilot evaluation | ✅ Completed | `scripts/pipeline/`, pilot metric report |
+| __Nov 25__ | Revised draft with 15–20 data examples | 🔄 In Progress | Chapter 2–3 draft, pivot sample charts |
+| __Nov 29__ | Full pipeline execution & corpus results | ⏳ Queued | Statistical outputs, table placeholders |
+| __Dec 01__ | Results chapter draft | ⏳ Queued | Draft Chapter 4 (Results) |
+| __Dec 04__ | Full-picture draft submission | ⏳ Queued | Submission to Advisory Board |
+| __Dec 06__ | Presentation outline & code freeze | ⏳ Queued | Public reproducible release |
+| __Dec 10__ | Presentation slides draft | ⏳ Queued | Slide deck v1 |
+| __Dec 13__ | Final thesis assembly | ⏳ Queued | Complete thesis PDF |
+| __Dec 18__ | __Thesis Defense__ | 🎯 Goal | Final slides & defense recording |
 
 ---
+
 ## Git & Overleaf Synchronization Workflow
 
-This repository uses a **nested architecture** where the root directory manages the entire data science project (`src/`, `data/`, pipelines), while the `thesis/` subfolder houses the modular LaTeX codebase synchronized with Overleaf.
+This repository uses a __nested architecture__ where the root directory manages the entire data science project (`src/`, `data/`, pipelines), while the `thesis/` subfolder houses the modular LaTeX codebase synchronized with Overleaf.
 
 ```text
 ┌─────────────────────────────────────────────────────────────┐
@@ -200,12 +200,11 @@ pip install -r requirements.txt
 
 You can edit and compile the thesis either via Overleaf or locally.
 
-- **Option A:** Overleaf (Recommended for Writing)
+- __Option A:__ Overleaf (Recommended for Writing)
 
 Set thesis/main.tex as the Main Document in the Overleaf project settings.
 
-
-- **Option B:** Local Compilation
+- __Option B:__ Local Compilation
 
 The LaTeX project is decoupled for fast modular compilation. To compile locally from the CLI, navigate to the `thesis/` directory or specify the root file:
 
@@ -222,7 +221,7 @@ latexmk -c
 
 If using VS Code with LaTeX Workshop, open `thesis/main.tex` and trigger `Build LaTeX project`.
 
-> **Tip for Overleaf / Fast Iteration:** To compile a single chapter in isolation while maintaining cross-references and page numbers, uncomment `\includeonly{chapters/ch03_methodology}` in `thesis/main.tex`.
+> __Tip for Overleaf / Fast Iteration:__ To compile a single chapter in isolation while maintaining cross-references and page numbers, uncomment `\includeonly{chapters/ch03_methodology}` in `thesis/main.tex`.
 
 ### 2. Running the Data Analysis Pipeline
 
