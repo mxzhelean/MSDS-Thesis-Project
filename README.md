@@ -63,6 +63,64 @@ MSDS-Thesis-Project/
         ├── app_d_bertopic.tex     # Appendix D: BERTopic Cluster Keyword Detail Tables
         └── app_e_stats.tex        # Appendix E: Complete Statistical ANOVA Tables
 ```
+---
+
+## Research Roadmap & Milestones (Nov – Dec 2026)
+
+### Sprint Planner 🗓️ 
+
+```mermaid
+gantt
+    title Thesis Sprint Timeline
+    dateFormat  YYYY-MM-DD
+    axisFormat  %b %d
+    tickInterval 3day
+
+    section Phase 1: Quantitative Core
+    Pipeline Setup & Pilot Samples       :done,    2026-11-20, 2026-11-22
+    Revised Draft (15-20 Samples)        :active,  2026-11-23, 2026-11-25
+    Full Corpus Execution & Brief Report :         2026-11-26, 2026-11-29
+
+    section Phase 2: Synthesis & Defense
+    Results Chapter Assembly             :         2026-11-30, 2026-12-01
+    Full Draft (Discussion & Submission) :crit,    2026-12-02, 2026-12-04
+    Presentation Outline & Slides        :         2026-12-05, 2026-12-10
+    Final Thesis Assembly                :         2026-12-11, 2026-12-13
+    Defense Presentation                 :milestone, 2026-12-18, 0d
+```
+
+<!-- ```mermaid
+timeline
+    title Thesis Sprint Roadmap (2026)
+    section November
+        22 : Pipeline setup report & code push
+        25 : Revised draft (15-20 data examples)
+        29 : Full corpus execution & results brief
+    section December
+        01 : Results chapter draft
+        04 : Full draft submission to advisory board
+        06 : Presentation outline & code freeze
+        10 : Presentation slides draft
+        13 : Final thesis assembly
+        16 : Final slides sent out for review
+        18 : Proposed thesis defense
+``` -->
+
+
+
+### Deliverables Matrix
+
+| Target Date | Milestone / Objective | Status | Key Deliverables / Artifacts |
+| :--- | :--- | :---: | :--- |
+| **Nov 22** | Pipeline setup report & pilot evaluation | ✅ Completed | `scripts/pipeline/`, pilot metric report |
+| **Nov 25** | Revised draft with 15–20 data examples | 🔄 In Progress | Chapter 2–3 draft, pivot sample charts |
+| **Nov 29** | Full pipeline execution & corpus results | ⏳ Queued | Statistical outputs, table placeholders |
+| **Dec 01** | Results chapter draft | ⏳ Queued | Draft Chapter 4 (Results) |
+| **Dec 04** | Full-picture draft submission | ⏳ Queued | Submission to Advisory Board |
+| **Dec 06** | Presentation outline & code freeze | ⏳ Queued | Public reproducible release |
+| **Dec 10** | Presentation slides draft | ⏳ Queued | Slide deck v1 |
+| **Dec 13** | Final thesis assembly | ⏳ Queued | Complete thesis PDF |
+| **Dec 18** | **Thesis Defense** | 🎯 Goal | Final slides & defense recording |
 
 ---
 ## Git & Overleaf Synchronization Workflow
