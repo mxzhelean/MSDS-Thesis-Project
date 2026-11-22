@@ -1,0 +1,106 @@
+\begin{tikzpicture}[
+    box/.style={
+        rectangle, draw=black!75, thick, rounded corners=2pt,
+        align=center, font=\footnotesize, inner sep=6pt, fill=white
+    },
+    widebox/.style={
+        box, minimum width=14.4cm, text width=13.8cm
+    },
+    trackAbox/.style={
+        box, minimum width=9.45cm, text width=9.0cm,
+        minimum height=1.65cm
+    },
+    colbox/.style={
+        box, minimum width=4.5cm, text width=4.1cm,
+        minimum height=1.65cm
+    },
+    tierbox/.style={
+        colbox, minimum height=4.0cm
+    },
+    arrow/.style={
+        -{Stealth[length=2.2mm]}, thick, draw=black!75
+    }
+]
+
+% Stage 1: Theoretical Anchors
+\node[widebox, fill=gray!8] (theory) {
+    {\small\textbf{Theoretical Anchors}} %(Bridging Chapter 2 $\rightarrow$ Chapter 3)}}
+    \\[3pt]
+    \textbullet~\cite{Warren2020}: \textit{Multiplicity} \& \textit{Horizontality} \\
+    \textbullet~\cite{Ashkinaze2025}: Individual Quality vs.\ Collective Diversity\\
+    \textbullet~\cite{Jain2025}: Task-Anchored Functional Diversity \& Validity Constraints
+};
+
+% Stage 2: Stateless API Sampling
+\node[widebox, below=0.75cm of theory] (sampling) {
+    {\small\textbf{Stateless Zero-Shot API Sampling (Default Baseline Audit)}}\\[3pt]
+    3 Models (\texttt{GPT-4o}, \texttt{Claude 3.5 Sonnet}, \texttt{Gemini 1.5 Pro})
+    $\times$ 2 Tasks [Task 1: KNN (Cat.\ D) $\mid$ Task 2: AI Ethics (Cat.\ E)]\\
+    $\times$ 50 Independent Iterations
+    (No Personas / No Diversity Steering) $= 300$ Independent Outputs
+};
+
+% Stage 3: Dual-Track Preprocessing
+\node[trackAbox, below=0.75cm of sampling.south west, anchor=north west]
+    (trackA) {
+    {\small\textbf{Track A: Raw Structured Text}}\\[3pt]
+    Preserves Markdown \& Rhetorical Framing
+};
+
+\node[colbox, below=0.75cm of sampling.south east, anchor=north east]
+    (trackB) {
+    {\small\textbf{Track B: Normalized Text}}\\[3pt]
+    Stripped \& Token-Cleaned JSON
+};
+
+% Stage 4: Two-Tier Analytics
+% Increased vertical separation from the Track row to 1.25 cm.
+\node[tierbox, below=1.25cm of trackA.south west, anchor=north west]
+    (tier1) {
+    {\small\textbf{Tier 1: Individual Quality}}\\
+    \textit{(Validity Floor / Gate)}\\[5pt]
+    \textbullet~Task 1: Binary Checklist ($0/1$)\\[3pt]
+    \textbullet~Task 2: Scoping Rubric ($1\text{--}5$)
+};
+
+\node[tierbox, right=0.45cm of tier1] (tier2b) {
+    {\small\textbf{Tier 2B: Functional \&}}\\
+    {\small\textbf{Perspectival Variety (RQ1/H1)}}\\[5pt]
+    \textbullet~Task 1: Analogy Entropy ($H$)\\[3pt]
+    \textbullet~Task 2: Directed QCA ($0/1$)
+};
+
+\node[tierbox, right=0.45cm of tier2b] (tier2a) {
+    {\small\textbf{Tier 2A: Collective}}\\
+    {\small\textbf{Semantic Spread (RQ2/H2)}}\\[5pt]
+    \textbullet~Sentence Embeddings\\[3pt]
+    \textbullet~Pairwise Cosine Dist.\ ($\bar{D}_{\cos}$)\\[3pt]
+    \textbullet~Centroid Variance ($\sigma^2$)
+};
+
+% Stage 5: Validation and Synthesis
+\node[widebox, fill=gray!8, below=0.75cm of tier2b] (synthesis) {
+    {\small\textbf{Unified Validation \& Epistemic Enclosure Synthesis}}\\[3pt]
+    \textbullet~Human Ground Truth + Deterministic LLM Cross-Validation Audit\\
+    %(Cohen's $\kappa$ / Krippendorff's $\alpha \ge 0.80$)
+    \textbullet~Diagnosis: \textit{Pluralistic Cognitive Scaffold}
+    (High Tier 1 + High Tier 2) vs.\
+    \textit{Epistemic Enclosure}
+    (High Tier 1 + Collapsed Tier 2)
+};
+
+% Arrows
+\draw[arrow] (theory.south) -- (sampling.north);
+
+\draw[arrow] (sampling.south -| trackA.north) -- (trackA.north);
+\draw[arrow] (sampling.south -| trackB.north) -- (trackB.north);
+
+\draw[arrow] (trackA.south -| tier1.north) -- (tier1.north);
+\draw[arrow] (trackA.south -| tier2b.north) -- (tier2b.north);
+\draw[arrow] (trackB.south) -- (tier2a.north);
+
+\draw[arrow] (tier1.south) -- (synthesis.north -| tier1.south);
+\draw[arrow] (tier2b.south) -- (synthesis.north);
+\draw[arrow] (tier2a.south) -- (synthesis.north -| tier2a.south);
+
+\end{tikzpicture}

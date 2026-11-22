@@ -83,5 +83,15 @@
 ]{biblatex}
 \DeclareLanguageMapping{american}{american-apa}
 
-% Add bibresource relative to thesis root
+% ── Add bibresource relative to thesis root ───────────────────
 \addbibresource{references.bib}
+
+
+% Add figures
+\usepackage{graphicx}
+\graphicspath{{figures/}}
+% ── Chapter-based packages ───────────────────────────
+
+% ch03
+\usepackage{tikz}
+\usetikzlibrary{positioning, shapes.geometric, arrows.meta}
