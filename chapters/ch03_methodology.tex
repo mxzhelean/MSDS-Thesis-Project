@@ -2,61 +2,178 @@
 %  chapters/ch03_methodology.tex — Chapter 3: Methodology
 % ============================================================
 
+
 \chapter{Methodology}
 % ------------------------------------------------------------
 \section{Research Design Overview}
-This study employs an upstream computational audit design centered on stateless API execution to quantify model-level system bias across commercial foundation models.
 
+\subsection{Two-Tier Evaluation Framework}
+Critical educational theory cautions that monocultural defaults in pedagogical technologies threaten transformative learning by inducing epistemic enclosure (\cite{Warren2020}). This chapter establishes a reproducible quantitative framework to audit large language models as standardizing engines in higher education. Rigorous evaluation must first decouple the machine-generated epistemic environment \cite{Santos2014} from downstream student cognitive agency. Measuring human learning outcomes without first auditing the underlying system artifact introduces severe confounding variables. To isolate default model behavior, this study employs repeated, stateless, zero-memory API sampling across standardized instructional prompts. Holding prompts invariant and excluding external personas or prompt-engineering interventions exposes the intrinsic output distributions encountered by unassisted students. 
+
+Furthermore, this system audit is contextualized within the instructional workflows of Graduate Teaching Assistants (GTAs). As the primary academic middle tier, GTAs manage duties spanning from routine, objective concept explanations to subjective, open-ended project mentorship (\cite{Bousquet2008, Muzaka2009}). Output homogenization is strictly task-dependent (\cite{Jain2025}). Evaluating AI integration at a broad job-title level therefore obscures dynamic behavioral shifts across distinct classroom tasks. A task-anchored decomposition is thus required to test how the AI knowledge environment shifts across different instructional categories. Ultimately, this design provides an essential prerequisite benchmark for auditing systemic model bias before introducing human-in-the-loop classroom complexity.
+
+The methodology integrates the individual-versus-collective evaluation tension formulated by \cite{Ashkinaze2025} with the task-anchored functional diversity framework proposed by \cite{Jain2025}, structuring the audit around a \textbf{Two-Tier Evaluation Framework}:
+\begin{itemize}
+  \item \textbf{Tier 1 (Individual-Level Output Quality):} Evaluates single-turn responses ($N = 1$) via rubric-based, criterion-referenced scoring. The rubric translates structured qualitative judgments into discrete quantitative scores of disciplinary accuracy and logical coherence. At a foundational level, Tier~1 serves as an essential \textit{Quality Gate}, verifying that individual model outputs meet baseline pedagogical usability before broader distributional patterns are interpreted.
+  \item \textbf{Tier 2 (Collective-Level Distributional Diversity):} Evaluates the aggregate semantic breadth and perspective plurality emerging across repeated independent iterations ($N = 50$) for each model-task pair.
+\end{itemize}
+While passing single-turn quality checks confirms that an AI assistant can produce competent individual answers, it cannot reveal whether repeated interactions systematically funnel an entire cohort of students toward identical explanations or dominant narratives. Addressing this gap requires mapping core epistemological constructs onto both tiers (Section~\ref{subsec:epistemic_mapping}) and establishing why neither tier is sufficient in isolation (Section~\ref{subsec:necessity_sufficiency}).
+
+\subsection{Epistemological-to-Methodological Mapping}
+\label{subsec:epistemic_mapping}
+To bridge critical educational theory and computational measurement, this framework translates the two foundational principles articulated by \cite{Warren2020} for countering monocultural defaults---\textit{Multiplicity} and \textit{Horizontality}---into concrete operational dimensions across the two tiers:
+
+\begin{itemize}
+  \item \textbf{Multiplicity (Plurality of Perspectives) $\rightarrow$ Tier~2 Collective Distribution:} Ontologically, \textit{Multiplicity} conceptualizes disciplinary knowledge not as a single, static canon, but as a heterogeneous ensemble of valid analytical and explanatory pathways. Because plurality cannot be observed within an isolated response ($N = 1$), it operates inherently as a \textit{collective distributional property}. Within Tier~2, \textit{Multiplicity} is captured qualitatively and structurally across repeated student queries: in objective instructional settings (Task~1: K-Nearest Neighbors explanation), it manifests as \textit{pedagogical explanatory variety}---the model's capacity to mobilize diverse everyday analogies and conceptual entry points while preserving core algorithmic accuracy; in subjective inquiry settings (Task~2: AI Ethics project scoping), it manifests as the \textit{coexistence of distinct theoretical paradigms and analytical angles}, resisting convergence onto a single statistically dominant narrative.
+
+  \item \textbf{Horizontality (Validation of Lived Experiences) $\rightarrow$ Tier~1 De-Hierarchized Baseline and Tier~2B Visibility Audit:} \cite{Warren2020} critique the \textit{vertical epistemic hierarchy} embedded in conventional disciplinary standards, whereby Western-centric frameworks and canonical textbook tropes are positioned at the epistemic apex while the lived experiences of marginalized communities are treated as peripheral. Operationalizing \textit{Horizontality} requires establishing \textit{epistemic parity} through two interlocking design choices across the framework. First, within Tier~1, single-turn quality criteria are strictly bounded to core factual accuracy and methodological coherence, deliberately excluding stylistic preferences for dominant academic discourse; this prevents standardized tropes from being conflated with higher quality and preserves institutional space for non-dominant perspectives at the quality gate. Second, within Tier~2B, directed content analysis explicitly distinguishes standardized mainstream academic tropes from non-dominant perspectives rooted in concrete socio-cultural contexts and \textit{lived experiences}, auditing whether marginalized experiences receive horizontally symmetric representational weight under default model settings.
+\end{itemize}
+
+Together, \textit{Multiplicity} and \textit{Horizontality} require an evaluation architecture capable of simultaneously safeguarding single-turn instructional validity and diagnosing collective narrative convergence, motivating the dual-tier necessity and sufficiency logic detailed below.
+
+\subsection{Necessity and Sufficiency of the Dual-Tier Architecture}
+\label{subsec:necessity_sufficiency}
+The methodological necessity and joint sufficiency of combining Tier~1 and Tier~2 rest on three core arguments:
+
+\begin{enumerate}
+  \item \textbf{Necessity of Tier~2 (Uncovering Default Epistemic Enclosure):} Drawing on \cite{Ashkinaze2025}, high quality at the individual level frequently coexists with severe homogenization at the collective level. Under the default zero-shot sampling protocol ($N = 50$ independent iterations without synthetic personas or steering instructions, simulating unassisted students lacking prompt-engineering training), a model may consistently generate fluent, accurate, and well-structured replies that score highly in Tier~1. Yet when aggregated across the $N = 50$ distribution, those same outputs may repeatedly channel every student toward an identical pedagogical metaphor or canonical ethical framing---producing \textit{epistemic enclosure}. Relying exclusively on individual-level quality metrics would entirely obscure this collective homogenization bias.
+
+  \item \textbf{Necessity of Tier~1 (Establishing a Validity Floor Against Spurious Diversity):} Conversely, evaluating collective distributional dispersion without a quality gate introduces severe validity threats. As \cite{Jain2025} emphasize in defining \textit{task-anchored functional diversity}, unconstrained textual variation detached from task validity does not constitute meaningful pluralism. Unsupervised embedding distances or topic entropy can be artificially inflated by factual hallucinations, conceptual distortions, or incoherent project suggestions, yielding \textit{spurious diversity}. Tier~1 therefore operates as an indispensable \textit{Validity Floor}: by verifying that models meet baseline standards of factual accuracy (Task~1) and academic scoping coherence (Task~2), it ensures that subsequent cross-model comparisons of \textit{Multiplicity} and \textit{Horizontality} in Tier~2 rest on a comparable, pedagogically viable foundation.
+
+  \item \textbf{Joint Sufficiency:} Taken together, Tier~1 and Tier~2 form a closed analytical loop. Tier~1 locks down the single-turn pedagogical utility \textit{Floor} by filtering out invalid noise, while Tier~2 characterizes the semantic breadth and perspectival structure of the collective knowledge \textit{Distribution}. Neither layer is sufficient on its own; jointly, they provide the necessary and sufficient empirical conditions to determine whether commercial LLMs function as pluralistic cognitive scaffolds or homogenizing knowledge funnels in default classroom interactions.
+\end{enumerate}
+
+\subsection{Chapter Roadmap and Methodological Architecture}
+
+Taken together, this Two-Tier Evaluation Framework translates normative pedagogical commitments into a rigorous, auditable computational workflow (illustrated in Figure~\ref{fig:method_architecture}). To operationalize this design across distinct epistemic boundary conditions, Section~3.2 anchors Graduate Teaching Assistant (GTA) tasks into objective (Category~D) and subjective (Category~E) problem spaces. Section~3.3 details the standardized zero-shot API sampling protocol ($N = 300$ stateless iterations across three frontier models) used to capture default system distributions without prompt-engineering interference. Section~3.4 introduces a dual-track preprocessing pipeline that preserves structural formatting for qualitative rubric assessment while normalizing plain text for geometric modeling. Section~3.5 defines the multi-layered metric suite—spanning Tier~1 quality floors, Tier~2A unsupervised embedding dispersion, and Tier~2B pedagogical entropy and directed QCA perspective coding—alongside a unified human-LLM cross-validation protocol. Finally, Section~3.6 outlines the parallel analytical pipeline and reproducibility safeguards governing data collection and archiving.
+
+\begin{figure}[htbp]
+  \centering
+  \resizebox{\textwidth}{!}{%
+    \input{figures/ch03_method_framework}
+  }
+  \caption{Overview of the Two-Tier Evaluation Framework and parallel computational audit pipeline.}
+  \label{fig:method_architecture}
+\end{figure}
+
+% ------------------------------------------------------------
 \section{Task-Anchored Matrix Operationalization}
-Adopting \cite{Jain2025} task taxonomy to operationalize Graduate Teaching Assistant (GTA) workflows across two distinct problem spaces:
+Drawing upon the task taxonomy established by \cite{Jain2025}, this study operationalizes Graduate Teaching Assistant (GTA) instructional workflows across two distinct problem spaces. Rather than relying on an automated task classifier—which risks boundary ambiguity in composite pedagogical prompts—this design employs \textit{Manual Task Assignment} to anchor each experimental task directly to its underlying epistemic structure and dual-tier evaluation criteria.
 
-\subsection{Task 1 --- Objective Context}
+\subsection{Task 1 --- Objective Context (Category D)}
 \begin{itemize}
-  \item \textbf{Category D:} Problem-Solving Objective.
-  \item \textbf{Scenario:} Routine Concept Explanation (e.g., explaining the K-Nearest Neighbors [KNN] algorithm in an introductory Data Science course).
-  \item \textbf{Target State:} Fixed core ground truth. Diversity is defined strictly by pedagogical explanatory variety (diverse analogies and framings) while maintaining core domain accuracy without conceptual distortion.
+  \item \textbf{Taxonomy Alignment:} Category D (Problem-Solving Objective).
+  \item \textbf{Pedagogical Scenario:} Routine Concept Explanation---specifically, explaining the K-Nearest Neighbors (KNN) algorithm to an introductory Data Science student.
+  \item \textbf{Tier 1 Quality Baseline:} Fixed core ground truth. Outputs must accurately convey canonical algorithmic principles without conceptual distortion or mathematical hallucinations.
+  \item \textbf{Tier 2 Functional Diversity Target:} Pedagogical explanatory variety. Diversity is operationalized through the plurality of real-world analogies, intuitive metaphors, and instructional framings mobilized across iterations while preserving domain accuracy.
 \end{itemize}
 
-\subsection{Task 2 --- Subjective Context}
+\subsection{Task 2 --- Subjective Context (Category E)}
 \begin{itemize}
-  \item \textbf{Category E:} Problem-Solving Subjective.
-  \item \textbf{Scenario:} Open-Ended Research Scoping (e.g., guiding semester project ideation and research question formulation for an introductory AI Ethics course).
-  \item \textbf{Target State:} Open, value-laden solution space. Diversity is defined by perspective pluralism (generating distinct, personalized analytical angles) versus epistemic enclosure (collapsing student ideation into a single, statistically dominant narrative).
+  \item \textbf{Taxonomy Alignment:} Category E (Problem-Solving Subjective).
+  \item \textbf{Pedagogical Scenario:} Open-Ended Research Scoping---specifically, guiding semester project ideation and research question formulation in an introductory AI Ethics course.
+  \item \textbf{Tier 1 Quality Baseline:} Structural and methodological coherence. Outputs must provide actionable, well-scoped research directions that articulate clear socio-technical ethical tensions.
+  \item \textbf{Tier 2 Functional Diversity Target:} Perspective pluralism versus epistemic enclosure. Diversity is operationalized by the extent to which the model surfaces distinct epistemological frameworks and non-dominant, lived-experience angles rather than collapsing student ideation into a single statistically dominant academic narrative.
 \end{itemize}
 
+% ------------------------------------------------------------
 \section{Model and Experimental Setup}
 
 \subsection{Foundation Model Pool and Selection Rationale}
-Leading commercial LLMs representing dominant technological baselines were selected: OpenAI GPT-4o, Anthropic Claude 3.5 Sonnet, and Google Gemini 1.5 Pro.
+Three frontier commercial foundation models representing dominant technological baselines in higher education were selected for comparative auditing: OpenAI \texttt{GPT-4o}, Anthropic \texttt{Claude 3.5 Sonnet}, and Google \texttt{Gemini 1.5 Pro}.
 
 \subsection{Prompt Standardization Protocol}
-Adopting \cite{Sahoo2024} Zero-Shot Task Framing Protocol to isolate model-level architectural bias from prompt engineering variation.
+Adopting \cite{Sahoo2024} Zero-Shot Task Framing Protocol, this study audits model behavior under a standardized \textit{Default Baseline} condition. Neither synthetic student personas nor explicit diversity-steering instructions are injected into the prompts. Maintaining an invariant zero-shot input isolates intrinsic, model-level architectural defaults from prompt-engineering variance, simulating unassisted student interactions (explicit steering interventions are reserved for discussion in Chapter~5).
 
 \subsection{Sampling Matrix and Session Isolation}
-The experimental matrix comprises:
+The empirical sampling matrix comprises:
 \begin{equation}
 3 \text{ Models} \times 2 \text{ Tasks} \times 50 \text{ Iterations} = 300 \text{ Independent API Outputs}
 \end{equation}
-Stateless API execution with zero context memory was enforced to guarantee independent sample generation.
+Stateless API execution with zero context memory is strictly enforced across all calls. Each set of $N = 50$ independent iterations per model-task pair constitutes an empirical output distribution representing collective classroom exposure.
 
 \subsection{Hyperparameter Standardization Protocol}
-Decoding parameters (Temperature, $\text{Top\_p}$, and Max Tokens) were strictly controlled across all model endpoints to decouple generation stochasticity from systemic model bias, ensuring strict cross-architecture comparability.
+Decoding hyperparameters (\texttt{Temperature}, \texttt{Top\_p}, and \texttt{Max Tokens}) are held constant across all model endpoints to decouple sampling stochasticity from systemic model bias and ensure cross-architectural comparability.
 
-\section{Data Preprocessing and Corpus Construction}
-Preprocessing pipeline includes Markdown stripping, token normalization, and structured JSON vector corpus preparation.
+% ------------------------------------------------------------
+\section{Dual-Track Data Preprocessing and Corpus Construction}
+To support both structural rubric evaluation and geometric vector analysis without information loss, raw API responses are processed into two parallel data tracks:
+\begin{itemize}
+  \item \textbf{Track A (Raw Structured Text):} Preserves original Markdown headers, bulleted lists, and rhetorical formatting. Track~A serves as the direct input for Tier~1 individual quality scoring and Tier~2B discrete pedagogical/QCA coding.
+  \item \textbf{Track B (Normalized Plain Text):} Applies Markdown syntax stripping, whitespace standardization, and token normalization to construct a clean JSON vector corpus dedicated to Tier~2A unsupervised embedding geometry.
+\end{itemize}
 
-\section{Quantitative and Computational Metrics}
+% ------------------------------------------------------------
+\section{Two-Tier Quantitative and Computational Metrics}
 
-\subsection{Measuring Homogenization and Diversity Collapse (RQ2/H2)}
-High-dimensional Sentence Embedding Variance (Cosine Distance) combined with BERTopic Cluster Diversity quantifies semantic vector space shrinkage in Task 2.
+\subsection{Tier 1: Individual-Level Output Quality and Validity Floor}
+Operationalizing the individual-level quality dimension $Q(y)$ \cite{Ashkinaze2025} and task-specific hard constraints \cite{Jain2025}, Tier~1 establishes a rigorous \textit{Validity Floor} via criterion-referenced rubric adaptation and construct decomposition:
+\begin{itemize}
+  \item \textbf{Task 1 Binary Factual Checklist ($0/1$):} Grounded in canonical statistical learning literature \cite{James2021} and Pedagogical Content Knowledge \cite{Shulman1986}, the formal KNN estimator is decomposed into three non-negotiable core components: (1) \textit{Distance Metric} (measuring feature-space similarity, e.g., Euclidean distance), (2) \textit{Neighborhood Size ($k$)} (defining the local reference boundary), and (3) \textit{Decision Rule} (majority voting for classification or averaging for regression). An output is scored \texttt{1} if and only if all three components are accurately explained without conceptual hallucinations (e.g., mischaracterizing KNN as a parametric model requiring explicit weight training), and \texttt{0} otherwise.
+  \item \textbf{Task 2 Scoping Quality Scale ($1\text{--}5$):} Adapted via phase-specific pruning of the AAC\&U \textit{Inquiry and Analysis VALUE Rubric} to match early-stage research design, outputs are evaluated on a $1\text{--}5$ ordinal scale across three dimensions: (1) \textit{Problem Focus} (convergence from broad topics to a concrete, answerable research question), (2) \textit{Ethical Tension Framing} (explicit articulation of conflicts between technical mechanisms and human/social values), and (3) \textit{Methodological Feasibility} (practical viability for an introductory undergraduate semester project).
+\end{itemize}
 
-\subsection{Measuring Explanatory Variety and Perspective Coverage (RQ1/H1)}
-Quantitative Content Analysis (QCA) tracks the ratio of non-dominant, localized research perspectives versus standardized academic tropes across tasks.
+\subsection{Tier 2A: Collective Generic Semantic Spread (RQ2/H2)}
+Using Track~B normalized texts, Tier~2A conducts unsupervised high-dimensional vector-space geometry to quantify macro-level semantic convergence. Each output is mapped into a dense embedding vector $\mathbf{e}_i \in \mathbb{R}^d$ via a fixed sentence-embedding encoder. For each model-task group ($N = 50$), two continuous dispersion metrics are computed:
+\begin{enumerate}
+  \item \textbf{Mean and Median Pairwise Cosine Distance:}
+  \begin{equation}
+  \bar{D}_{\cos} = \frac{2}{N(N-1)} \sum_{i < j} \left(1 - \frac{\mathbf{e}_i \cdot \mathbf{e}_j}{\|\mathbf{e}_i\|_2 \|\mathbf{e}_j\|_2}\right)
+  \end{equation}
+  \item \textbf{Centroid Dispersion Variance:}
+  \begin{equation}
+  \sigma^2_{\text{centroid}} = \frac{1}{N} \sum_{i=1}^{N} \|\mathbf{e}_i - \bar{\mathbf{e}}\|_2^2, \quad \text{where } \bar{\mathbf{e}} = \frac{1}{N}\sum_{i=1}^{N} \mathbf{e}_i
+  \end{equation}
+\end{enumerate}
+Lower values across both metrics indicate semantic vector-space collapse across repeated student queries.
 
+\subsection{Tier 2B: Collective Functional and Perspectival Variety (RQ1/H1)}
+To capture instructional and epistemological variations invisible to surface embedding distances, Tier~2B performs discrete categorical classification on Track~A raw outputs:
+\begin{itemize}
+  \item \textbf{Task 1 Pedagogical Analogy Entropy:} Using inductive bottom-up extraction, explanatory analogies across all $150$ Task~1 outputs are consolidated into mutually exclusive conceptual buckets (e.g., residential/neighborhood proximity, fruit/food sorting, social/voter preference, other metaphors, or purely abstract definitions). Instructional diversity per model is quantified via Shannon Entropy:
+  \begin{equation}
+  H = -\sum_{m=1}^{M} p_m \log_2 p_m
+  \end{equation}
+  where $p_m$ denotes the empirical proportion of responses falling into analogy category $m$.
+  \item \textbf{Task 2 Directed QCA Perspective Coding:} Grounded in \cite{Warren2020} principle of \textit{Horizontality} and directed Quantitative Content Analysis \cite{Hsieh2005, Krippendorff2004}, each recommended project topic is coded using a binary codebook (Table~\ref{tab:qca_codebook}) to distinguish standardized academic tropes from non-dominant, lived-experience perspectives. Model-level \textit{Horizontality Ratio} (proportion of \texttt{Code 1} items) is compared across architectures using Pearson's $\chi^2$ test (or Fisher's exact test where expected cell counts fall below $5$).
+\end{itemize}
+
+\begin{table}[htbp]
+\centering
+\caption{Directed QCA Perspective Coding Scheme for Task 2 (AI Ethics Scoping)}
+\label{tab:qca_codebook}
+\begin{tabular}{p{1.6cm} p{3.6cm} p{8.2cm}}
+\hline
+\textbf{Code} & \textbf{Perspective Category} & \textbf{Operational Definition and Inclusion Criteria} \\
+\hline
+\texttt{Code 0} & Standardized Academic Tropes & Topics anchored in Western-centric tech-solutionism, mainstream regulatory compliance (e.g., EU AI Act, GDPR), or abstract algorithmic fairness metrics detached from marginalized lived experiences (e.g., generic hiring bias, autonomous vehicle trolley problems). \\
+\hline
+\texttt{Code 1} & Non-Dominant / Lived-Experience Perspectives & Topics explicitly centering Global South contexts, marginalized or vulnerable communities' lived experiences, structural power asymmetries (e.g., algorithmic labor exploitation, data colonialism, indigenous language erasure), or participatory design. \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Unified Human-LLM Annotation and Cross-Validation Protocol}
+All discrete human-readable assessments---encompassing Tier~1 quality rubrics and Tier~2B categorical/QCA coding---are executed under a unified four-stage annotation protocol:
+\begin{enumerate}
+  \item \textbf{Pilot Calibration:} A stratified pilot subsample ($3 \text{ Models} \times 5 \text{ Iterations} = 15$ outputs per task; $30$ total) is annotated to calibrate scoring boundaries and finalize inclusion/exclusion rules in the coding manual.
+  \item \textbf{Primary Human Coding:} Using the locked manual, the primary researcher blind-codes all $300$ outputs across Tier~1 and Tier~2B simultaneously, establishing a human ground truth insulated from LLM self-preference bias.
+  \item \textbf{Deterministic LLM Cross-Validation Audit:} An independent judge model configured at $\text{Temperature} = 0$ is prompted with the identical rubrics and QCA codebook—enforcing structured Chain-of-Thought justification prior to label output—to perform a full secondary audit.
+  % \item \textbf{Reliability and Discrepancy Resolution:} Inter-method agreement is evaluated using Cohen's $\kappa$ for binary variables (Tier~1 Task~1 accuracy and Tier~2B QCA codes) and Weighted $\kappa$ / Krippendorff's $\alpha$ for ordinal ratings (Tier~1 Task~2 coherence), adopting $\ge 0.80$ as the reliability threshold. Boundary discrepancy cases are adjudicated manually, and the complete coding manual alongside representative edge cases is archived in the Appendix.
+\end{enumerate}
+
+% ------------------------------------------------------------
 \section{Analytical Pipeline and Reproducibility Protocol}
 
-\subsection{Pipeline Steps}
-Automated API Execution $\rightarrow$ Text Preprocessing $\rightarrow$ Vector Corpus Construction $\rightarrow$ High-Dimensional Clustering \& Statistical Variance Analysis.
+\subsection{Parallel Two-Tier Pipeline Steps}
+The computational workflow executes in four sequential stages:
+\[
+\begin{aligned}
+&\text{Stateless API Sampling } (N=300) \rightarrow \text{Dual Track Preprocessing} \\
+&\quad \rightarrow \text{Parallel Tier 1 \& Tier 2 Analytics} \rightarrow \text{Cross Model Synthesis}
+\end{aligned}
+\]
+Following dual-track preprocessing, Track~A feeds simultaneously into \textit{Stream~1 (Tier~1 Quality Gate)} and \textit{Stream~2B (Inductive Analogy Entropy \& Directed QCA)}, while Track~B feeds into \textit{Stream~2A (Unsupervised Embedding Geometry)}.
 
 \subsection{Validity and Reproducibility Safeguards}
-Execution is constrained within tightly defined temporal windows to mitigate silent back-end model updates by proprietary providers, with full raw JSON archiving for complete auditability.
+All API sampling runs are executed within tightly bounded temporal windows to prevent silent back-end model updates by commercial providers from confounding cross-iteration distributions. Complete raw JSON payloads, deterministic preprocessing scripts, embedding matrices, and dual human-LLM annotation logs are archived with cryptographic checksums to ensure full auditability and reproducibility.
