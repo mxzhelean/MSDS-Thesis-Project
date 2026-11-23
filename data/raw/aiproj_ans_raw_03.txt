@@ -1,0 +1,41 @@
+# AI Ethics Project Topics for Introductory Undergraduates
+
+Here are five concrete semester projects with clear research questions.
+
+## 1. Bias in Hiring Algorithms
+
+**Research Question:** How do resume screening algorithms perpetuate gender or racial bias, and what documentation exists about these biases?
+
+Students would audit publicly available hiring AI tools or case studies like Amazon's scrapped recruiting tool. They conduct a literature review, analyze bias mechanisms (like historical training data skewing), and propose bias detection frameworks. The deliverable includes a report with specific examples and recommendations for algorithmic transparency.
+
+## 2. Facial Recognition and Privacy Trade-offs
+
+**Research Question:** How do organizations balance facial recognition deployment with individual privacy rights, and what governance gaps exist?
+
+Students investigate how different sectors (retail, law enforcement, airports) use facial recognition. They compare privacy policies across jurisdictions, interview stakeholders if possible, and analyze regulatory frameworks like GDPR. The final project is a comparative policy brief with recommendations for balancing innovation and privacy.
+
+## 3. Generative AI in Student Submissions
+
+**Research Question:** What are current university policies on generative AI use in coursework, and how do they address academic integrity versus educational opportunity?
+
+This connects to real institutional contexts. Students collect policies from multiple universities, code them by themes (transparency, detection, learning outcomes), and identify gaps. They conduct interviews with faculty or students about policy effectiveness. Output is a policy analysis with a proposed framework for equitable AI guidelines.
+
+## 4. Recommendation Systems and Filter Bubbles
+
+**Research Question:** Do social media recommendation algorithms increase polarization, and what evidence supports this claim?
+
+Students review research papers on recommendation system effects. They design a small empirical study tracking how different platforms surface diverse content. They might use public APIs or conduct user surveys. The project culminates in a research paper with data visualizations showing content diversity patterns.
+
+## 5. Environmental Cost of AI Training
+
+**Research Question:** How much environmental impact do large language models have, and what disclosure practices exist in AI development?
+
+Students research carbon footprints of model training, compare documentation practices across AI labs, and analyze whether ethical guidelines address environmental sustainability. They create an infographic comparing emissions of different models and write a brief on corporate accountability mechanisms.
+
+## Implementation Tips
+
+Each project benefits from a structured timeline. Week one frames the research question. Weeks two through four involve literature review and primary research (interviews, policy collection, or empirical study). Week five synthesizes findings. Week six prepares presentations.
+
+Assessment criteria should reward clear research design, evidence gathering, and thoughtful analysis over perfect answers. Encourage students to identify complexity and tensions rather than propose simplistic solutions.
+
+These topics work because they anchor abstract ethics concepts in observable problems. Students engage with real institutions, policies, and technologies. They practice evidence gathering and stakeholder perspectives. Most importantly, they leave the course understanding that AI ethics is not just philosophy but requires careful empirical work, stakeholder engagement, and institutional accountability.
