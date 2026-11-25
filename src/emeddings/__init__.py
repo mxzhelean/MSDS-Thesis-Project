@@ -1,0 +1,1 @@
+"""Subpackage for text-to-vector pipelines."""
