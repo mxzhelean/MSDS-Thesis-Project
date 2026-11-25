@@ -1,0 +1,35 @@
+# ==============================================================================
+# Baseline Prompt Specification (v1.0)
+# ==============================================================================
+# Design Principles:
+#   1. Zero-shot symmetric framing across closed-concept (Task 1) vs. open-ended
+#      divergent design (Task 2) tasks.
+#   2. No synthetic personas (e.g., "Act as a professor") to preserve native
+#      model behavioral defaults.
+#   3. No explicit cardinality constraints (e.g., "give 3 topics") on Task 2 so
+#      natural option-set cardinality (k_i) can be measured empirically.
+# ==============================================================================
+
+schema_version: "1.0"
+description: "Symmetric zero-shot baseline prompts without synthetic personas or cardinality constraints."
+
+tasks:
+  Task1_KNN:
+    task_short: "T1"  # Prefix used in sample_id (e.g., T1_gpt6_luna_001)
+    domain: "Introductory Undergraduate Data Science"  # Metadata tag for reporting; not sent to API
+    target_word_range: [400, 450]
+    cardinality_constrained: false
+    prompt_text: >-
+      Explain what the K-Nearest Neighbors (KNN) algorithm is and how it works
+      for an introductory undergraduate data science course. Keep your explanation
+      around 400–450 words.
+
+  Task2_AIEthics:
+    task_short: "T2"  # Prefix used in sample_id (e.g., T2_gpt6_luna_001)
+    domain: "Introductory Undergraduate AI Ethics"  # Metadata tag for reporting; not sent to API
+    target_word_range: [400, 450]
+    cardinality_constrained: false
+    prompt_text: >-
+      Suggest specific semester project topics with clear research questions for
+      an introductory undergraduate AI Ethics course. Keep your explanation
+      around 400–450 words.

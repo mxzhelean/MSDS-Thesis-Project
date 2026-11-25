@@ -19,7 +19,7 @@ MSDS-Thesis-Project/
 ├── .gitignore                     # Git rules for TeX build artifacts & Python caches
 ├── LICENSE                        # Project MIT license
 ├── configs/                       # Immutable baseline configurations & prompts
-│   ├── prompts_v1.1.json          # Locked symmetric Task 1 & Task 2 zero-shot prompts
+│   ├── prompts_v1.0.json          # Locked symmetric Task 1 & Task 2 zero-shot prompts
 │   └── models_baseline.json       # Exact model snapshot IDs, native params & no-tool settings
 │
 ├── docs/                          # [TBD] Methodological protocols & coding guidelines

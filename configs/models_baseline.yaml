@@ -1,0 +1,50 @@
+# ==============================================================================
+# Multi-Model Baseline Configuration
+# ==============================================================================
+# Reproducibility & Ecological Validity Controls:
+#   - system_instruction: null -> Evaluates out-of-the-box default behavior.
+#   - tools: [] & grounding: false -> Isolates parametric model weights from web search.
+#   - stateless_session: true -> Every iteration sends a fresh single-turn request.
+#   - sampling_policy: native_default -> Leaves temperature/top_p unset (provider defaults).
+# ==============================================================================
+
+baseline_protocol:
+  system_instruction: null
+  tools: []
+  grounding: false
+  stateless_session: true
+  sampling_policy: "native_default"
+  timeout_sec: 240         # Hard per-request timeout to prevent hung connections
+  max_retries: 3           # Exponential backoff retries on 429/503/timeout errors
+  backoff_base_sec: 5      # Wait 5s, 10s, 20s between retry attempts
+
+models:
+  - model_short: "gpt6_luna"
+    provider: "openai"
+    display_name: "GPT-6 Luna"
+    model_id: "gpt-6-luna"  # Update if API console specifies a dated snapshot suffix
+    api_key_env: "OPENAI_API_KEY"
+    native_params:
+      temperature: null
+      top_p: null
+      max_tokens: null
+
+  - model_short: "claude_haiku45"
+    provider: "anthropic"
+    display_name: "Claude Haiku 4.5"
+    model_id: "claude-haiku-4-5"
+    api_key_env: "ANTHROPIC_API_KEY"
+    native_params:
+      temperature: null
+      top_p: null
+      max_tokens: 4096      # Required parameter by Anthropic Messages API; high ceiling avoids truncation
+
+  - model_short: "gemini35_flash_lite"
+    provider: "google"
+    display_name: "Gemini 3.5 Flash Lite"
+    model_id: "gemini-3.5-flash-lite"
+    api_key_env: "GEMINI_API_KEY"
+    native_params:
+      temperature: null
+      top_p: null
+      max_output_tokens: null
