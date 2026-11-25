@@ -158,6 +158,7 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+logs/*.log
 
 # Spyder project settings
 .spyderproject
@@ -218,3 +219,15 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Local data
+data/raw/*
+data/processed/*
+data/annotations/*
+data/embeddings/*
+
+# Exception for sample/ in data/*
+!data/raw/sample/
+!data/processed/sample/
+!data/annotations/sample/
+!data/annotations/schema_template.csv
