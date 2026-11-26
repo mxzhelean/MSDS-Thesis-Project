@@ -1,0 +1,53 @@
+For an introductory undergraduate AI Ethics course, effective semester projects
+connect abstract ethical frameworks to tangible, real-world systems that
+students can audit or investigate without needing advanced programming skills,
+while fostering critical moral reasoning. Here are five specific project topics
+with focused research questions:
+
+1. Algorithmic Representation in Generative AI Students can conduct a structured
+qualitative audit of popular text-to-image models (such as Midjourney or DALL-E)
+by prompting them to generate images of various professions, socioeconomic
+roles, or cultural groups. Research Question: To what extent do commercial
+text-to-image generators reinforce gender and racial stereotypes across high-
+and low-status professions, and how effective are current developer guardrails
+at mitigating these biases?
+
+2. EdTech Surveillance and Student Autonomy Many universities use AI-driven
+proctoring software or automated text-detection tools (e.g., Turnitin,
+Honorlock). Students can analyze institutional policies alongside documented
+false-positive rates for non-native English speakers or neurodivergent learners.
+Research Question: How do automated academic integrity tools balance
+institutional fairness against student privacy and accessibility, and do their
+error rates render their deployment ethically unjustifiable?
+
+3. AI Companions and Emotional Vulnerability With the rise of personalized
+chatbots (e.g., Replika, Character.ai), questions arise regarding parasocial
+attachment, consent, and the monetization of loneliness. Students can evaluate
+terms of service, interface design ("dark patterns"), and documented user
+testimonies. Research Question: Under what ethical conditions, if any, is it
+permissible for commercial AI companions to simulate empathy and romantic
+attachment, particularly when marketed to minors or emotionally vulnerable
+users?
+
+4. The Hidden Human Labor Behind "Autonomous" AI Large language models rely
+heavily on outsourced data labeling and content moderation, often performed
+under precarious conditions in the Global South. Students can examine
+investigative labor reports and corporate transparency disclosures through
+frameworks of distributive justice. Research Question: How do major AI
+developers distribute the economic benefits and psychological harms of data
+annotation across global supply chains, and what ethical obligations do they owe
+to contracted workers?
+
+5. Environmental Justice and AI Infrastructure Training and querying large
+models require substantial electricity and freshwater for data center cooling,
+frequently straining local municipalities. Students can review municipal
+water-use agreements, energy grid reports, and corporate sustainability
+disclosures for a specific regional facility. Research Question: When local
+communities bear the water and energy burdens of hyperscale AI data centers
+without receiving proportional economic benefits, what frameworks of
+environmental justice should govern AI infrastructure siting?
+
+Project Execution Tip: Encourage students to pair their chosen research question
+with an explicit ethical framework—such as utilitarianism, Kantian deontology,
+care ethics, or Rawlsian justice—to structure their analysis and formulate
+actionable policy recommendations for developers or regulators.

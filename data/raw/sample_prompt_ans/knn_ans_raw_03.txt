@@ -1,0 +1,52 @@
+What is K-Nearest Neighbors (KNN)?
+
+K-Nearest Neighbors (KNN) is a foundational supervised machine learning
+algorithm used for both classification (predicting a category, such as whether
+an email is spam) and regression (predicting a continuous number, such as a
+house’s price).
+
+KNN is built on a straightforward intuition: similar data points tend to exist
+close to one another. Unlike algorithms that learn a complex mathematical
+equation during a training phase, KNN is a non-parametric, "lazy" learning
+algorithm. It does not build an abstract model; instead, it simply memorizes the
+training dataset and waits until it receives a new data point to do any real
+work.
+
+How KNN Works
+
+When you give the algorithm a new, unlabeled data point to predict, KNN follows
+four simple steps:
+
+1.  Choose K: Select the number of neighbors (K) to consider (for example, K=5).
+2.  Calculate Distances: Measure the distance between the new data point and
+    every point in the training dataset. The most common metric is Euclidean
+    distance (the straight-line distance between two points), though others like
+    Manhattan distance can also be used.
+3.  Find the Nearest Neighbors: Sort the distances from smallest to largest and
+    identify the K training points closest to the new point.
+4.  Make a Prediction:
+      - For classification: The algorithm takes a "majority vote" among the K
+        neighbors. If K=5 and 3 neighbors belong to Class A while 2 belong to
+        Class B, the new point is assigned to Class A.
+      - For regression: The algorithm calculates the average (mean) of the
+        values of the K nearest neighbors and outputs that as the prediction.
+
+Choosing the Right Value of K
+
+Selecting K is a balancing act. If K is too small (e.g., K=1), the model becomes
+overly sensitive to noise and outliers—a problem known as overfitting.
+Conversely, if K is too large, the model looks at too many distant points,
+smoothing over important local patterns and underfitting the data. For binary
+classification problems, it is good practice to choose an odd number for K to
+prevent tie votes. Data scientists typically use cross-validation to test
+multiple K values and find the best balance.
+
+Important Practical Considerations
+
+Because KNN relies entirely on distance, feature scaling is critical. If one
+feature ranges from 0 to 1 (like GPA) and another ranges from 20,000 to 150,000
+(like income), income will dominate the distance calculation. Standardizing or
+normalizing your features ensures every variable contributes fairly.
+Additionally, while KNN requires almost zero time to "train," predictions can
+become slow on massive datasets because the algorithm must compute distances to
+every stored data point for each new prediction.

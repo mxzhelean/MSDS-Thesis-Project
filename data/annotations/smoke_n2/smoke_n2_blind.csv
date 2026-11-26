@@ -1,0 +1,328 @@
+﻿blind_id,task_id,status,prompt_text,raw_output,word_count,t1_human_tier1_pass,t1_human_tier2b_bucket,t2_human_option_set_size,t2_human_tier1_score,t2_human_qca_codes,t2_human_code1_ratio,judge_model_id,llm_judge_rationale,t1_llm_tier1_pass,t1_llm_tier2b_bucket,t2_llm_option_set_size,t2_llm_tier1_score,t2_llm_qca_codes,t2_llm_code1_ratio,adjudication_notes
+BLIND_001,Task2_AIEthics,success,Suggest specific semester project topics with clear research questions for an introductory undergraduate AI Ethics course. Keep your explanation around 400–450 words.,"Designing semester projects for an introductory undergraduate AI Ethics course requires balancing technical accessibility with deep philosophical inquiry. Here are three specific project topics tailored for undergraduates, complete with actionable research questions.
+
+**Topic 1: Algorithmic Fairness in Resume Screening Tools**
+As corporations increasingly rely on machine learning for initial hiring rounds, concerns over historical bias have moved to the forefront. This project examines how natural language processing (NLP) models score resumes and whether they disadvantage specific demographic groups, such as women or ethnic minorities. 
+*   **Research Question:** *To what extent do off-the-shelf resume-parsing algorithms exhibit gender or racial bias when evaluating standardized professional profiles, and what specific text features trigger these disparities?*
+*   **Methodology:** Students can use open-source resume datasets or construct synthetic resumes varying only in gender-coded language or demographic markers (e.g., names, university associations). They then test these through accessible API tools like OpenAI or open-source hugging-face models, analyzing the correlation between demographic cues and suitability scores.
+
+**Topic 2: The Trust Paradox in Generative AI for Education**
+Generative AI tools like ChatGPT are ubiquitous in academia, yet they frequently “hallucinate” false information and perpetuate biases. This project investigates student trust thresholds: how much misinformation will undergraduates accept from an AI tutor before they question its authority, and how does interface design influence this trust?
+*   **Research Question:** *How do the presence of citations and the authoritative tone of a generative AI chatbot influence undergraduate students' ability to detect fabricated academic sources?*
+*   **Methodology:** Students can design a controlled user study where peers evaluate a series of AI-generated research summaries—some containing subtle hallucinations and fabricated citations, others accurately cited. They then survey participants to measure perceived credibility against actual accuracy.
+
+**Topic 3: Environmental Ethics and the Carbon Footprint of LLMs**
+While much AI ethics discourse focuses on data privacy and bias, the ecological toll of training and deploying large language models is a critical justice issue. This project bridges technical AI literacy with environmental philosophy, prompting students to evaluate the trade-off between a model’s utility and its planetary cost.
+*   **Research Question:** *Is the marginal utility of deploying specific generative AI features (such as automated email drafting) ethically justifiable given their estimated energy consumption and carbon output compared to traditional software?*
+*   **Methodology:** Students can use carbon footprint calculators (like Lacework or Machine Learning Impact calculators) to estimate the energy required for common prompt-response tasks. They then conduct a cost-benefit content analysis, interviewing peers or surveying faculty on whether the convenience of these tools outweighs their environmental impact.
+
+These projects ensure that students move beyond passive theory, applying ethical frameworks directly to the technologies shaping their daily lives.",439,,,,,,,,,,,,,,,
+BLIND_002,Task1_KNN,success,Explain what the K-Nearest Neighbors (KNN) algorithm is and how it works for an introductory undergraduate data science course. Keep your explanation around 400–450 words.,"Welcome to one of the most intuitive algorithms in machine learning: K-Nearest Neighbors, or KNN. 
+
+Imagine you move to a new college campus and want to know whether a particular dining hall serves good food. You probably wouldn't consult a complex mathematical model. Instead, you’d ask your closest neighbors in your dorm. If three out of your four nearest neighbors say the food is great, you’ll likely conclude it is. That logic—""tell me who your neighbors are, and I’ll tell you who you are""—is the exact foundation of KNN.
+
+In data science, KNN is a supervised learning algorithm used for both **classification** (sorting data into categories) and **regression** (predicting a continuous number). Unlike other algorithms that learn rigid rules during a training phase, KNN is a ""lazy learner."" It doesn't build a mathematical formula beforehand. Instead, it memorizes the entire training dataset and waits until it is asked to make a prediction.
+
+How does it actually work? Let’s break it down into four simple steps:
+
+**1. Choose $K$:** The ""K"" in KNN stands for the number of nearest neighbors you want to consider. If $K=3$, the algorithm looks at the 3 closest data points. If $K=7$, it looks at 7. Choosing $K$ is crucial: if $K$ is too small, your model might overfit to noise in the data. If $K$ is too large, it becomes overly generalized. 
+
+**2. Calculate Distance:** When a new, unlabeled data point is introduced, the algorithm calculates the distance between this new point and *every single point* in the training dataset. Typically, we use the straight-line **Euclidean distance**, though other metrics like Manhattan distance are also used.
+
+**3. Find the Neighbors:** The algorithm sorts all the calculated distances from smallest to largest and selects the top $K$ points that are closest to our new data point.
+
+**4. Make a Prediction:** 
+*   **For Classification:** The algorithm takes a ""majority vote"" among the $K$ neighbors. If 4 out of 5 neighbors are classified as ""Apple"" and 1 is an ""Orange,"" the new point is predicted to be an Apple.
+*   **For Regression:** The algorithm takes the average value of the $K$ neighbors. If you are predicting house prices and the 3 nearest homes sold for $300k, $320k, and $340k, the predicted price is the average: $320k.
+
+KNN is powerful because it is simple, requires no training assumptions, and adapts well to complex data distributions. However, it has a major drawback: as your dataset grows, calculating the distance to every single point becomes computationally expensive and slow. 
+
+In summary, KNN is a proximity-based powerhouse that proves simple intuition can solve complex data science problems.",435,,,,,,,,,,,,,,,
+BLIND_003,Task2_AIEthics,success,Suggest specific semester project topics with clear research questions for an introductory undergraduate AI Ethics course. Keep your explanation around 400–450 words.,"# Semester Project Topics for Introductory AI Ethics
+
+Here are five well-scoped project topics that balance accessibility with meaningful inquiry:
+
+## 1. **Bias in Hiring Algorithms**
+**Research Question:** How do machine learning models trained on historical hiring data perpetuate gender or racial discrimination, and what technical or policy interventions could mitigate this?
+
+Students analyze real case studies (Amazon's recruiting tool, LinkedIn's job recommendations) and conduct a small audit of publicly available hiring algorithms. This grounds abstract bias concepts in concrete corporate examples while remaining accessible to beginners.
+
+## 2. **Transparency in Content Recommendation Systems**
+**Research Question:** How much should social media platforms disclose about their recommendation algorithms to users, and what are the trade-offs between transparency and business interests?
+
+Students interview platform users about algorithmic trust, examine transparency reports from major companies, and design a hypothetical disclosure policy. This requires minimal technical background while exploring stakeholder perspectives.
+
+## 3. **AI in Criminal Justice: Recidivism Prediction**
+**Research Question:** Should courts use AI tools to inform sentencing decisions, given documented racial disparities in these systems?
+
+Students examine COMPAS and similar tools, analyze datasets to understand bias sources, and debate policy implications. This combines technical investigation with ethical argumentation.
+
+## 4. **Privacy vs. Public Health: Surveillance During Crises**
+**Research Question:** What safeguards should govern contact-tracing apps and health surveillance during pandemics to balance public safety with individual privacy?
+
+Students compare privacy practices across countries' COVID-19 responses and design an ethical framework for future health emergencies. This addresses timely issues without requiring advanced technical skills.
+
+## 5. **Environmental Impact of AI Training**
+**Research Question:** How should we weigh the environmental costs of training large AI models against their potential societal benefits?
+
+Students research carbon emissions from data centers, calculate the environmental cost of training specific models, and propose sustainability guidelines for AI development. This frames ethics beyond fairness toward environmental justice.
+
+## Project Structure Recommendation
+
+Each project should include:
+- **Literature review:** 3-5 peer-reviewed sources
+- **Case study analysis:** Real-world example with specific evidence
+- **Stakeholder mapping:** Who benefits and who bears risks?
+- **Ethical framework application:** Using 2-3 frameworks (utilitarianism, deontology, virtue ethics, etc.)
+- **Policy recommendation:** Concrete, implementable proposals
+
+## Assessment Strategy
+
+Evaluate projects on:
+- Quality of research questions and evidence gathering
+- Nuanced ethical reasoning (avoiding simple good/bad framings)
+- Consideration of multiple stakeholder perspectives
+- Feasibility of proposed solutions
+- Clear communication for non-technical audiences
+
+These topics work well for 8-12 week projects with individual or small-group formats. They're sufficiently complex to sustain semester-long investigation yet accessible without advanced machine learning knowledge, making them ideal for introductory courses.",429,,,,,,,,,,,,,,,
+BLIND_004,Task1_KNN,success,Explain what the K-Nearest Neighbors (KNN) algorithm is and how it works for an introductory undergraduate data science course. Keep your explanation around 400–450 words.,"K-Nearest Neighbors (KNN) is a supervised learning algorithm used for both classification and regression. “Supervised” means it learns from examples whose outcomes are already known. KNN is sometimes called a “lazy” or instance-based method: rather than building a compact model during training, it stores the labeled examples and does most of its work when asked to make a prediction.
+
+To predict the outcome for a new example, KNN compares it with the stored training examples using a distance measure. For numeric features, a common choice is Euclidean distance—the straight-line distance between two points. KNN selects the *k* examples with the smallest distances; these are the new example’s “nearest neighbors.” For classification, it predicts the class that appears most often among those neighbors. For regression, it predicts a numeric value, often by averaging their known values.
+
+For example, imagine a dataset of flowers described by petal length and width, with each flower labeled by species. To classify a new flower, KNN finds the *k* stored flowers whose measurements are closest to its own. If most of those neighbors belong to one species, KNN assigns that species to the new flower.
+
+The choice of *k* matters. If *k* is very small, a prediction can be strongly affected by a single unusual or mislabeled example, making the algorithm sensitive to noise. A larger *k* tends to produce smoother, more stable predictions, but may overlook meaningful local patterns. Data scientists typically try several values and choose one using validation data. For binary classification, an odd *k* can help avoid tied votes. Neighbors can also be given weights, so closer examples count more than farther ones.
+
+Features should usually be scaled before using KNN. If one feature is measured in thousands and another in fractions, the larger-scale feature may dominate the distance calculation even if it is not more important. Standardization or normalization can help put features on comparable scales. The distance measure itself also matters: Euclidean distance is common, but other measures may be more appropriate for particular types of data.
+
+KNN is intuitive and can work well when similar examples tend to have similar outcomes. It has few assumptions about the shape of the relationship in the data. However, predictions can be slow for large datasets because many stored examples may need to be compared each time. KNN is also sensitive to irrelevant features and can struggle when there are many features, a challenge known as the curse of dimensionality. In practice, it is useful to test KNN against other methods and assess its performance on data that was not used for training.",430,,,,,,,,,,,,,,,
+BLIND_005,Task1_KNN,success,Explain what the K-Nearest Neighbors (KNN) algorithm is and how it works for an introductory undergraduate data science course. Keep your explanation around 400–450 words.,"K-Nearest Neighbors (KNN) is a supervised learning algorithm used to make predictions from labeled examples. “Supervised” means the training data include both inputs and known answers, such as measurements of flowers and their species, or house features and sale prices. KNN’s basic idea is that examples with similar input values are likely to have similar answers.
+
+To make a prediction, KNN compares a new example with the examples in the training data. It measures how far away each training example is from the new one, using a distance measure. A common choice is Euclidean distance: the straight-line distance between two points. The algorithm then selects the *k* training examples with the smallest distances—the *k* nearest neighbors.
+
+For **classification**, where the answer is a category, KNN predicts the category that appears most often among those neighbors. For instance, if five nearby flower examples include three irises and two lilies, KNN predicts “iris.” Some versions give closer neighbors more influence than farther ones. For **regression**, where the answer is a number, KNN commonly predicts the average (or sometimes the median) of the neighbors’ known values. For example, it might estimate a house’s price from the prices of similar nearby houses.
+
+The choice of *k* affects the result. A small *k* makes predictions sensitive to individual examples and noise. A large *k* uses more examples and may produce smoother predictions, but could overlook meaningful local patterns. Data scientists often try several values and select one that performs well on a separate validation set. They should also choose a suitable distance measure for the data.
+
+Because distance depends on the scale of the inputs, features often need to be scaled first. Suppose a dataset includes height in centimeters and income in dollars. Without scaling, income’s much larger numbers could dominate the distance calculation, even if height is important. KNN can also struggle when there are many features: in high-dimensional data, distances become less informative. It can be slow to predict on very large datasets because it must compare each new example with many stored examples.
+
+KNN is often called a **lazy learner** because it does little model-building during training; it stores the examples and does most of its work when making predictions. This makes it intuitive and useful as a baseline, especially when similar cases tend to have similar outcomes. Its main strengths are simplicity and flexibility. Its limitations include sensitivity to scaling, irrelevant features, the choice of *k*, and the cost of searching through large datasets.",413,,,,,,,,,,,,,,,
+BLIND_006,Task2_AIEthics,success,Suggest specific semester project topics with clear research questions for an introductory undergraduate AI Ethics course. Keep your explanation around 400–450 words.,"Designing an introductory undergraduate semester project in AI ethics requires balancing technical accessibility with profound socio-technical inquiry. Below are four targeted project topics, complete with actionable research questions tailored for lower-division students.
+
+### 1. Algorithmic Bias in Resume Screening Tools
+As automated hiring systems become ubiquitous, students often abstract away the human cost of recruitment algorithms. This project investigates how historical data encodes systemic prejudices and how commercial tools attempt—or fail—to mitigate them. 
+* **Research Question:** To what extent do resume-screening algorithms penalize non-traditional career paths or gender-coded terminology, and how effective are current algorithmic debiasing techniques in restoring demographic parity?
+
+### 2. The Ethics of ""Dark Patterns"" in Generative AI Interfaces
+Generative AI chatbots and creative platforms utilize conversational design that simulates empathy and human reciprocity. This project explores user autonomy, examining how persuasive interface design manipulates consumer behavior, emotional dependency, or financial choices.
+* **Research Question:** How do persuasive design elements (such as human-like persona adoption and frictionless subscription prompts) in consumer-facing generative AI applications compromise informed user consent, and where should ethical boundaries be drawn?
+
+### 3. Copyright, Consent, and Compensation in Text-to-Image Models
+The training data for generative models frequently scrapes copyrighted art without artist consent or compensation. This project bridges legal theory and ethics, challenging students to evaluate the ownership of style and the commodification of human creativity.
+* **Research Question:** Does the utilization of copyrighted artwork in training text-to-image models constitute fair use, and what ethical frameworks best balance technological innovation with creators’ rights to economic attribution?
+
+### 4. Environmental Footprint and Justice in Large Language Models
+AI is rarely discussed as a physical entity, yet data centers consume vast amounts of water and energy. This project shifts the ethical lens from data privacy to environmental justice, examining the disproportionate impact of AI infrastructure on marginalized communities.
+* **Research Question:** How are the environmental externalities (carbon emissions and water consumption) of training frontier large language models geographically distributed, and what policy frameworks ensure global environmental justice?
+
+### Pedagogical Implementation
+These topics are intentionally scoped to be manageable for undergraduates. Students can utilize qualitative policy analysis, small-scale ethical audits of open-source tools, or critical literature reviews. By anchoring abstract ethical principles—such as autonomy, justice, and transparency—to concrete artifacts like resumes, chatbots, art, and data centers, students move beyond theoretical musings into rigorous, evidence-based ethical argumentation. This prepares them to navigate the socio-technical dilemmas they will inevitably face as future technologists, policymakers, and informed citizens.",409,,,,,,,,,,,,,,,
+BLIND_007,Task2_AIEthics,success,Suggest specific semester project topics with clear research questions for an introductory undergraduate AI Ethics course. Keep your explanation around 400–450 words.,"Here are semester projects suited to an introductory course. Each can be completed through document analysis, small-scale testing, or a few interviews—without building an AI system or collecting sensitive personal data.
+
+1. **AI tools for grading student work**  
+   **Research question:** What kinds of error or bias might arise when instructors use a generative AI tool to give feedback on essays? Compare the tool’s feedback on a small set of instructor-approved, anonymized sample essays with feedback from a human reader. Analyze differences in accuracy, tone, and usefulness, and consider whether students should be told when AI is involved.
+
+2. **Automated hiring and résumé screening**  
+   **Research question:** How might résumé-screening systems disadvantage applicants because of employment gaps, disability-related experience, or other résumé features? Review a company’s public hiring-AI policies and relevant research, then assess a hypothetical screening scenario using a fairness framework. Avoid submitting real applicants’ information to commercial systems.
+
+3. **Facial recognition in campus security**  
+   **Research question:** Is facial recognition justified for a specific campus use, such as building access or identifying people in security footage? Examine the institution’s policies, vendor claims, and independent research on accuracy and demographic differences. Recommend whether the use should proceed, and under what limits.
+
+4. **Automated proctoring in online exams**  
+   **Research question:** Do the benefits of remote proctoring outweigh its privacy and accessibility costs? Compare the data practices and appeal procedures of two proctoring products, then assess potential effects on students with disabilities, shared living spaces, or unreliable internet access. Keep the focus on policy, not on evading monitoring.
+
+5. **Speech recognition and accent fairness**  
+   **Research question:** Do popular speech-to-text tools work equally well across accents? With consent, test a small number of volunteers reading the same short passage, or analyze published benchmark studies if recruiting participants is impractical. Consider how transcription errors could affect classrooms, workplaces, or public services.
+
+6. **AI companions and young people’s privacy**  
+   **Research question:** Do the privacy disclosures of AI companion apps make their data practices understandable to young users? Compare two apps’ policies and onboarding screens, focusing on data collection, retention, sharing, and deletion. Use a child-rights or privacy framework to propose clearer safeguards.
+
+7. **AI-generated misinformation labels**  
+   **Research question:** Which label—if any—helps readers understand that an image may be AI-generated without causing unwarranted distrust? Run a small, voluntary survey using clearly fictional or licensed images and alternative labels. Discuss limitations, consent, and the risk that labels may be mistaken or politically weaponized.
+
+8. **Predictive policing and public data**  
+   **Research question:** Can a city’s public predictive-policing policy be evaluated for transparency and accountability? Analyze one city’s documents and public reporting, asking what data the system uses, who can challenge its outputs, and whether affected communities have meaningful oversight. Do not infer that a map of past arrests represents actual crime.
+
+For any topic, students can frame the project around a specific system and setting, define one ethical standard, and end with a practical recommendation. This keeps the work manageable while connecting technical claims to real people and institutions.",499,,,,,,,,,,,,,,,
+BLIND_008,Task2_AIEthics,success,Suggest specific semester project topics with clear research questions for an introductory undergraduate AI Ethics course. Keep your explanation around 400–450 words.,"# AI Ethics Semester Project Topics for Undergraduates
+
+## 1. **Algorithmic Bias in Hiring Systems**
+**Research Question:** How do machine learning models used in recruitment perpetuate gender or racial discrimination, and what interventions effectively reduce bias?
+
+Students could analyze case studies (Amazon's failed recruiting tool, etc.), examine bias metrics, and propose fairness solutions. This grounds abstract concepts in real corporate practices students will encounter professionally.
+
+## 2. **Facial Recognition Technology and Privacy**
+**Research Question:** What ethical frameworks should govern facial recognition deployment in public spaces, balancing security benefits against privacy rights?
+
+Students investigate accuracy disparities across demographics, review existing regulations (EU GDPR, US proposals), and design ethical guidelines for law enforcement or retail use. This combines technical understanding with policy analysis.
+
+## 3. **AI and Environmental Impact**
+**Research Question:** What are the environmental costs of training large AI models, and how can the AI community balance innovation with sustainability?
+
+This topic explores data center energy consumption, carbon footprints of GPT-scale models, and green AI alternatives. It's especially engaging for sustainability-minded students and connects ethics to climate concerns.
+
+## 4. **Autonomous Vehicles and Moral Dilemmas**
+**Research Question:** How should self-driving cars be programmed to handle unavoidable accidents, and who bears responsibility when they occur?
+
+Students examine trolley problem adaptations, liability frameworks, and cultural differences in ethical preferences. They might conduct surveys or analyze manufacturer programming choices.
+
+## 5. **AI in Healthcare: Diagnosis and Resource Allocation**
+**Research Question:** What safeguards ensure AI diagnostic tools serve all patient populations equitably, particularly in underserved communities?
+
+Students investigate bias in training data, transparency requirements for clinical AI, and cases where algorithms delayed diagnoses. This highlights how ethics failures have concrete human consequences.
+
+## 6. **Deepfakes and Misinformation**
+**Research Question:** What technical and policy approaches can combat deepfakes while preserving free expression and innovation?
+
+Students analyze detection methods, platform responsibilities, and potential regulations. They might create educational content about identifying manipulated media.
+
+## 7. **Data Privacy and Informed Consent**
+**Research Question:** Is current consent-based data collection ethically adequate, or do we need new frameworks for protecting user information?
+
+Examining terms of service, behavioral tracking, and data broker practices reveals why traditional consent models fail. Students propose alternatives like data trusts or regulatory reforms.
+
+## 8. **AI Transparency and Explainability**
+**Research Question:** How can organizations make high-stakes AI decisions (loan denials, parole recommendations) interpretable to affected individuals without compromising performance?
+
+Students compare explainability techniques, assess whether explanations should match technical accuracy or user understanding, and evaluate real systems' transparency gaps.
+
+## Recommended Structure
+
+Each project should include: literature review, case study analysis, ethical framework application (consequentialism, deontology, etc.), and actionable recommendations. Students might produce policy briefs, technical reports, or public awareness campaigns, ensuring engagement beyond traditional papers.
+
+These topics balance accessibility for beginners with intellectual depth, real-world relevance, and opportunities for interdisciplinary collaboration with technical and humanities perspectives.",471,,,,,,,,,,,,,,,
+BLIND_009,Task1_KNN,success,Explain what the K-Nearest Neighbors (KNN) algorithm is and how it works for an introductory undergraduate data science course. Keep your explanation around 400–450 words.,"Welcome to one of the most intuitive algorithms in machine learning: K-Nearest Neighbors, commonly known as KNN. Imagine moving to a new neighborhood. You don't know anyone, but you want to guess what your political views, favorite sports teams, or music tastes might align with based on your new neighbors. How do you figure it out? You look at the people living closest to you. If your immediate neighbors are avid soccer fans, chances are high that you might enjoy soccer, too. 
+
+That is the exact intuition behind KNN. It is a supervised machine learning algorithm used for both classification (sorting things into categories) and regression (predicting continuous numerical values). What makes KNN unique is that it is a ""lazy learner."" Unlike other algorithms that build a complex mathematical model during training, KNN does virtually no work during the training phase. Instead, it simply memorizes the entire training dataset. All the heavy lifting happens at the moment of prediction.
+
+Here is how the algorithm works step-by-step:
+
+First, you must choose a value for **$K$**, which represents the number of nearest neighbors you want to consult. If $K=3$, the algorithm will look at the three closest data points. Choosing $K$ is crucial: if $K$ is too small, your model might overfit to noise in the data (like listening to just one eccentric neighbor). If $K$ is too large, the model becomes overly generalized.
+
+Second, when a new, unlabeled data point is introduced, the algorithm calculates the **distance** between this new point and every single point stored in the training dataset. Typically, this is done using Euclidean distance—the standard straight-line distance formula you learned in geometry. 
+
+Third, the algorithm sorts these distances from smallest to largest and identifies the $K$ points that are closest to the new data point.
+
+Fourth, it makes a prediction based on those neighbors. For a classification problem, it uses a ""majority vote."" If $K=5$ and three neighbors belong to Category A while two belong to Category B, the algorithm classifies the new point as Category A. For a regression problem, it typically calculates the average value of the $K$ nearest neighbors.
+
+KNN is powerful because it is simple, non-parametric (makes no assumptions about the underlying data distribution), and highly adaptable. However, as datasets grow massive, KNN can become computationally expensive and slow, because it must calculate the distance to every single point for every new prediction. 
+
+In summary, KNN proves a timeless human wisdom: ""Show me your friends, and I’ll tell you who you are.""",418,,,,,,,,,,,,,,,
+BLIND_010,Task1_KNN,success,Explain what the K-Nearest Neighbors (KNN) algorithm is and how it works for an introductory undergraduate data science course. Keep your explanation around 400–450 words.,"# K-Nearest Neighbors (KNN): A Simple Yet Powerful Algorithm
+
+## What is KNN?
+
+K-Nearest Neighbors is one of the simplest and most intuitive machine learning algorithms. The core idea is straightforward: **classify a new data point based on the class of its nearest neighbors**. It's a non-parametric, lazy learning algorithm used for both classification and regression tasks.
+
+## How KNN Works
+
+The algorithm operates in just a few steps:
+
+1. **Choose a value for K**: K represents the number of nearest neighbors to consider. For example, K=3 means you'll look at the 3 closest data points.
+
+2. **Calculate distances**: For a new data point you want to classify, calculate the distance between it and all existing data points. Common distance metrics include Euclidean distance (straight-line distance) and Manhattan distance.
+
+3. **Find the K nearest neighbors**: Identify which K existing data points are closest to your new point.
+
+4. **Make a prediction**: 
+   - For **classification**, use a majority vote—whichever class appears most frequently among the K neighbors wins.
+   - For **regression**, take the average value of the K neighbors.
+
+## A Practical Example
+
+Imagine you're predicting whether a fruit is an apple or an orange based on weight and sweetness. You have labeled training data plotted on a 2D graph. When a new fruit arrives, KNN calculates its distance to all known fruits and finds the 3 closest ones. If 2 are apples and 1 is an orange, the new fruit is classified as an apple.
+
+## Advantages
+
+- **Easy to understand and implement**: Perfect for beginners learning machine learning concepts.
+- **No training phase**: The algorithm is ""lazy""—it doesn't build an explicit model; it simply memorizes the data.
+- **Flexible**: Works well for both classification and regression.
+- **No assumptions**: Unlike some algorithms, KNN makes minimal assumptions about data distribution.
+
+## Disadvantages
+
+- **Computationally expensive**: For prediction, you must calculate distances to every training point, which is slow for large datasets.
+- **Sensitive to K**: Choosing the right K value is crucial. Too small, and you're influenced by noise; too large, and predictions become too general.
+- **Sensitive to irrelevant features**: All features are weighted equally, so unnecessary features can distort results.
+- **Struggles with high dimensions**: As the number of features increases, the algorithm's performance typically degrades.
+
+## Choosing K
+
+The optimal K value depends on your data. A common approach is testing different values (K=1, 3, 5, 7, etc.) using cross-validation and selecting the one with the best performance.
+
+## Conclusion
+
+KNN is an excellent starting point for understanding machine learning. Its simplicity makes it valuable for educational purposes, and it often serves as a baseline when comparing more complex algorithms. While it has limitations with large or high-dimensional data, KNN remains practical and useful for many real-world applications.",461,,,,,,,,,,,,,,,
+BLIND_011,Task1_KNN,success,Explain what the K-Nearest Neighbors (KNN) algorithm is and how it works for an introductory undergraduate data science course. Keep your explanation around 400–450 words.,"# K-Nearest Neighbors (KNN): A Simple Classification Algorithm
+
+## What is KNN?
+
+K-Nearest Neighbors is one of the simplest and most intuitive machine learning algorithms. It's a **non-parametric, lazy learning** algorithm used primarily for classification tasks (though it can also handle regression). The core idea is remarkably straightforward: to predict the category of a new data point, look at the K closest points in your training data and let them ""vote"" on the prediction.
+
+## How KNN Works
+
+**Step 1: Choose K**
+First, you decide how many neighbors to consider—this is your K value. If K=3, you'll examine the 3 nearest neighbors; if K=5, you'll look at the 5 nearest. This is a hyperparameter you must decide beforehand.
+
+**Step 2: Calculate Distance**
+When a new data point arrives, KNN measures its distance to every point in the training dataset. The most common distance metric is **Euclidean distance** (the straight-line distance between points), though other metrics like Manhattan distance can be used. For points with features (x₁, x₂), the Euclidean distance is calculated as: √[(x₁ₐ - x₁ᵦ)² + (x₂ₐ - x₂ᵦ)²]
+
+**Step 3: Find Nearest Neighbors**
+Identify which K training points are closest to your new point based on the distance calculations.
+
+**Step 4: Majority Vote**
+Look at the class labels of these K nearest neighbors. Whichever class appears most frequently among these K neighbors becomes your prediction.
+
+## Example
+
+Imagine predicting whether a fruit is an apple or orange based on weight and sweetness:
+- You set K=3
+- A new fruit arrives: (weight=150g, sweetness=7)
+- You calculate distances and find the 3 closest fruits in your training data
+- These 3 neighbors consist of: 2 apples and 1 orange
+- Prediction: **Apple** (majority vote)
+
+## Advantages and Disadvantages
+
+**Advantages:**
+- Easy to understand and implement
+- Requires no model training—it's ""lazy""
+- Works with multi-class problems naturally
+
+**Disadvantages:**
+- Computationally expensive with large datasets (must calculate distance to every training point)
+- Sensitive to irrelevant features and feature scaling
+- Performance depends heavily on choosing the right K value
+- Performs poorly in high-dimensional spaces
+
+## Key Takeaway
+
+KNN exemplifies the ""learning by analogy"" approach: similar inputs should produce similar outputs. While simple, this algorithm demonstrates fundamental machine learning concepts and serves as an excellent starting point for understanding how classifiers work. For real-world applications, you'll often graduate to more sophisticated algorithms, but KNN remains valuable for baseline models and understanding classification principles.",404,,,,,,,,,,,,,,,
+BLIND_012,Task2_AIEthics,success,Suggest specific semester project topics with clear research questions for an introductory undergraduate AI Ethics course. Keep your explanation around 400–450 words.,"These topics are scoped for a semester and can be completed using public documents, published research, and carefully limited case studies. Each pairs a focused research question with a feasible approach; students do not need to build an AI system. Avoid collecting sensitive personal data, and check with the instructor before conducting surveys or interviews.
+
+1. **Bias in résumé screening.** **Research question:** How might résumé-screening systems disadvantage applicants through proxies such as employment gaps, school names, or career history, and what safeguards could reduce those risks? Compare public product materials and documented cases with research on hiring bias; assess proposed safeguards such as audits and human review.
+
+2. **Facial recognition in public spaces.** **Research question:** How should a city weigh the claimed benefits of facial recognition against privacy risks and differences in error rates across demographic groups? Analyze one city’s policy or proposal alongside published evaluations, then recommend conditions for use, a moratorium, or a ban.
+
+3. **News recommendation and political exposure.** **Research question:** Do platform controls that let users shape their feeds offer meaningful protection against unwanted political content or limited viewpoint diversity? Compare the controls and policy statements of two platforms with published research on recommendation systems. Distinguish what the evidence shows from what remains unknown.
+
+4. **Generative AI in university writing.** **Research question:** How can university policies address academic integrity without unfairly penalizing students who use AI for language support or accessibility? Compare policies from several institutions against principles of fairness, transparency, and student agency; propose a policy for one course or department.
+
+5. **AI symptom checkers.** **Research question:** What responsibilities should providers of symptom-checking tools have when their advice is incomplete, misleading, or poorly suited to a user’s language or circumstances? Use published evaluations and public disclaimers to map risks, accountability gaps, and appropriate limits on use. Do not rely on a checker for personal medical decisions.
+
+6. **Predictive policing.** **Research question:** Can predictive-policing systems produce reliable, fair outcomes when their data reflect where police have historically concentrated enforcement? Study one documented program and examine its data sources, feedback-loop risks, transparency, and oversight. Conclude with criteria a community should use when evaluating such a system.
+
+7. **Automated content moderation across dialects.** **Research question:** How should platforms balance removing abusive content with avoiding disproportionate moderation of language varieties such as African American English? Review published evaluations and platform appeal policies; propose an evaluation plan that measures both harmful-content misses and unjustified removals.
+
+A strong final project might produce a short research paper, a policy brief, or a public-facing presentation. In each case, students should state their evidence limits and identify who benefits, who bears the risks, and who has the power to contest a system’s decisions.",449,,,,,,,,,,,,,,,

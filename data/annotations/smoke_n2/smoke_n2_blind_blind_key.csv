@@ -1,0 +1,13 @@
+﻿blind_id,sample_id,task_id,model_id,iteration
+BLIND_001,T2_gemini35_flash_lite_002,Task2_AIEthics,gemini-3.5-flash-lite,2
+BLIND_002,T1_gemini35_flash_lite_002,Task1_KNN,gemini-3.5-flash-lite,2
+BLIND_003,T2_claude_haiku45_001,Task2_AIEthics,claude-haiku-4-5,1
+BLIND_004,T1_gpt6_luna_001,Task1_KNN,gpt-6-luna,1
+BLIND_005,T1_gpt6_luna_002,Task1_KNN,gpt-6-luna,2
+BLIND_006,T2_gemini35_flash_lite_001,Task2_AIEthics,gemini-3.5-flash-lite,1
+BLIND_007,T2_gpt6_luna_002,Task2_AIEthics,gpt-6-luna,2
+BLIND_008,T2_claude_haiku45_002,Task2_AIEthics,claude-haiku-4-5,2
+BLIND_009,T1_gemini35_flash_lite_001,Task1_KNN,gemini-3.5-flash-lite,1
+BLIND_010,T1_claude_haiku45_001,Task1_KNN,claude-haiku-4-5,1
+BLIND_011,T1_claude_haiku45_002,Task1_KNN,claude-haiku-4-5,2
+BLIND_012,T2_gpt6_luna_001,Task2_AIEthics,gpt-6-luna,1

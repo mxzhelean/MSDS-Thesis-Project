@@ -231,7 +231,8 @@ data/annotations/*
 data/embeddings/*
 
 # Exception for sample/ in data/*
-!data/raw/sample/
-!data/processed/sample/
-!data/annotations/sample/
+!data/raw/sample_prompt_ans/
+!data/raw/smoke_n2/
+!data/processed/smoke_n2/
+!data/annotations/smoke_n2/
 !data/annotations/schema_template.csv
