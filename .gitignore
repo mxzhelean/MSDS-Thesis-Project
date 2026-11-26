@@ -160,6 +160,10 @@ env.bak/
 venv.bak/
 logs/*.log
 
+# VS Code
+.vscode/
+*.code-workspace
+
 # Spyder project settings
 .spyderproject
 .spyproject
