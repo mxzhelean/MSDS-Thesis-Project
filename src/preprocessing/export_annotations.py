@@ -86,3 +86,8 @@ if __name__ == "__main__":
     )
     for label, path in outputs.items():
         print(f"[OK] {label}: {path}")
+
+    # python -m src.preprocessing.export_annotations \
+    # --input-dir data/raw/pilot_n15 \
+    # --output-dir data/annotations/pilot_n15 \
+    # --prefix pilot_n15
