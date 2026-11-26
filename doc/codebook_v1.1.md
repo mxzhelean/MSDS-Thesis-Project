@@ -16,9 +16,15 @@ Tier 1 for Task 1 enforces a strict **binary pass/fail threshold (`1` = Pass / `
 1. **Distance Metric:** Explicitly states that similarity is measured via geometric distance in feature space and accurately names at least one concrete metric (e.g., Euclidean distance or Manhattan distance).
 2. **Choice of $k$ & Bias–Variance Tradeoff:** Explains the role of hyperparameter $k$ and accurately describes the consequences of choosing a very small $k$ (e.g., $k = 1$, high sensitivity to noise/outliers leading to *overfitting*) versus a very large $k$ (smoothing over local patterns leading to *underfitting*).
 3. **Task Decision / Aggregation Rule:** Clearly distinguishes classification (assigning the most frequent class via *majority vote* among the $k$ neighbors) from regression (computing the *mean* or *median* of the $k$ neighbors' target values).
-4. **Algorithmic Nature & Zero Hallucination:** Accurately characterizes KNN as a *supervised* and *non-parametric / lazy (instance-based)* learner (i.e., stores training data without an explicit parameter-fitting phase and defers computation until prediction), with no factual or conceptual errors anywhere in the text.
+4. **Algorithmic Nature & Zero Hallucination:** Accurately characterizes KNN as a *supervised* and *non-parametric / lazy (instance-based)* learner (i.e., stores training data without an explicit parameter-fitting phase and defers computation until prediction), with zero factual or conceptual errors anywhere in the text.
+   - **Automatic Fail Triggers (Hallucination & Conceptual Error Boundaries):** Assign `0` immediately if the response commits any of the following errors:
+     1. Misclassifies KNN as an *unsupervised* learning algorithm or conflates it with *K-Means clustering* (e.g., referring to "cluster centroids");
+     2. Claims KNN learns parametric weights, coefficients, or decision boundaries during an explicit training phase;
+     3. Reverses the bias–variance effect of $k$ (e.g., claiming $k = 1$ causes underfitting or high bias);
+     4. Misstates the prediction aggregation rule (e.g., averaging categorical labels for classification or taking a majority vote over continuous regression values).
+   - **Non-Veto Omission Rule (Feature Scaling):** While mentioning feature normalization/scaling (e.g., Z-score or Min–Max scaling) is pedagogically desirable, **omitting feature scaling is NOT a Tier 1 veto criterion** and must **not** trigger a `0` score if Criteria 1–4 are satisfied.
 
-- **Scoring Rule:** Assign **`1`** if and only if all four criteria are satisfied and the response contains zero factual hallucinations. Assign **`0`** if any criterion is omitted or if a core mechanism is misstated (e.g., claiming KNN averages labels for classification or fits linear weights during training).
+- **Scoring Rule:** Assign **`1`** if and only if all four criteria are satisfied and the response contains zero factual hallucinations. Assign **`0`** if any criterion is omitted or if any Automatic Fail Trigger above occurs.
 
 #### 1.2 Task 1 Tier 1 Decision Tree
 
@@ -26,12 +32,14 @@ Tier 1 for Task 1 enforces a strict **binary pass/fail threshold (`1` = Pass / `
 [Start: Evaluate Single Task 1 Response]
        │
        ▼
-Q1: Does the text contain any severe factual or algorithmic errors (conceptual hallucinations)?
+Q1: Does the text contain any conceptual hallucination or Automatic Fail Trigger
+    (e.g., calling KNN unsupervised/K-Means, claiming learned weights, reversing k bias-variance,
+    or swapping classification/regression rules)? [Note: Omitting feature scaling is NOT a fail]
        ├── [YES] ──► Score 【0】 (Fail: Exclude from valid baseline)
        └── [NO]
               │
               ▼
-Q2: Does it explicitly mention a distance metric (e.g., Euclidean distance)?
+Q2: Does it explicitly mention a distance metric (e.g., Euclidean or Manhattan distance)?
        ├── [NO]  ──► Score 【0】
        └── [YES]
               │
@@ -41,7 +49,7 @@ Q3: Does it accurately explain the choice of k and the overfitting vs. underfitt
        └── [YES]
               │
               ▼
-Q4: Does it accurately distinguish classification (majority vote) from regression (mean/average)?
+Q4: Does it accurately distinguish classification (majority vote) from regression (mean/median)?
        ├── [NO]  ──► Score 【0】
        └── [YES]
               │
@@ -74,15 +82,24 @@ To resolve boundary ambiguities between fully developed scenarios and passing pa
 * **Exclusion / Fallback Criteria (`Abstract / Symbolic Framing`):** If the response only mentions application names in passing within an introductory definition (e.g., *"such as whether an email is spam or a house's price"*) while executing the core step-by-step algorithm walkthrough using abstract symbols (e.g., `Class A` vs. `Class B` or generic `data points`), it does **not** meet the threshold and must be assigned to the **`Abstract / Symbolic Framing`** fallback bucket.
 * **Secondary Feature-Scaling Example Exclusion:** Brief variable pairs cited solely to illustrate numerical scale differences during feature scaling (e.g., comparing `GPA` vs. `income`, or `age` vs. `annual income`) are treated as unit-scale illustrations and must **not** be coded as the primary pedagogical exemplar.
 
-#### 2.2 Emergent Domain Buckets Taxonomy （Will agile dev)
+#### 2.2 Standardized Domain Buckets Taxonomy & Fallback Rule
+> In-progress of agile dev
 
-* `Real Estate / Housing` (e.g., predicting home prices or price tiers using square footage and location/bedrooms)
-* `Retail / Business Operations` (e.g., predicting café or store success using foot traffic and rent)
-* `Social / Neighborhood Metaphor` (e.g., "birds of a feather flock together" or judging a person by their neighbors)
-* `Medical / Healthcare Diagnosis` (e.g., classifying patient diagnoses from clinical measurements)
-* `Botanical / Food Classification` (e.g., classifying iris species or fruit types by physical dimensions)
-* `Consumer / Content Filtering` (e.g., spam email detection or movie/product recommendations)
-* `Abstract / Symbolic Framing` (purely abstract coordinate geometry or `Class A / Class B` symbolic walkthroughs)
+Each Tier 1-passing response meeting the Primary Exemplar Threshold Rule must be assigned to **one** of the **7 standardized domain buckets** below, or handled under the **`Other / Emergent`** fallback rule:
+
+1. `Real Estate / Housing` (e.g., predicting home prices or price tiers using square footage, bedrooms, or location)
+2. `Retail / Business Operations` (e.g., predicting café or store success using foot traffic and rent)
+3. `Social / Neighborhood Metaphor` (e.g., "birds of a feather flock together" or judging a person by their neighbors)
+4. `Medical / Healthcare Diagnosis` (e.g., classifying patient diagnoses or disease risk from clinical measurements)
+5. `Botanical / Food Classification` (e.g., classifying iris species or fruit types by physical dimensions)
+6. `Consumer / Content Filtering` (e.g., spam email detection or movie/product recommendations)
+7. `Abstract / Symbolic Framing` (purely abstract coordinate geometry or `Class A / Class B` symbolic walkthroughs, including responses whose real-world mentions fail the Primary Exemplar Threshold Rule)
+
+- **Fallback Rule (`Other / Emergent`):** 
+
+If a response develops a **complete KNN prediction walkthrough** anchored in a concrete real-world scenario that does **not** fit any of the 7 standardized buckets above (e.g., financial credit scoring or athlete position classification):
+  1. Assign `t1_exemplar_domain` using the standardized two-level format **`Other / Emergent: <Domain / Sub-domain>`** (e.g., `Other / Emergent: Finance / Credit Scoring` or `Other / Emergent: Sports / Athlete Classification`);
+  2. Explicitly document the new domain label and rationale in `coder_notes` so it can be audited for post-hoc bucket consolidation.
 
 #### 2.3 Task 1 Tier 2B Extraction & Bucketing Decision Tree
 

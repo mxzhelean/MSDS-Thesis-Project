@@ -1,0 +1,32 @@
+# configs/judge_config.yaml
+# Configuration for Automated LLM-as-a-Judge Cross-Audit Pipeline
+
+judge_settings:
+  default_judge: "claude_sonnet55"
+  secondary_judge: "gpt61_sol"
+  codebook_path: "doc/codebook_v1.1.md"
+  max_retries: 3
+  retry_delay_sec: 5
+  request_delay_sec: 0.5
+
+judges:
+  claude_sonnet55:
+    provider: "anthropic"
+    model_id: "claude-sonnet-5-5"
+    api_key_env: "ANTHROPIC_API_KEY"
+    params:
+      max_tokens: 2048
+
+  gpt61_sol:
+    provider: "openai"
+    model_id: "gpt-6.1-sol"
+    api_key_env: "OPENAI_API_KEY"
+    params:
+      max_tokens: 2048
+
+  gemini4_hydrogen:
+    provider: "google"
+    model_id: "gemini-4-hydrogen"
+    api_key_env: "GEMINI_API_KEY"
+    params:
+      max_output_tokens: 2048
