@@ -1,5 +1,5 @@
 """
-Stateless, Crash-Safe Multi-Model Batch Execution Engine.
+Stateless, Crash-Safe Multi-Model Batch Execution Engine with Unified Logging.
 
 Enforces:
 1. Stateless single-turn calls (no history carryover, no system_instruction, no tools/grounding).
@@ -26,6 +26,7 @@ import time
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, List
+from venv import logger
 
 import yaml
 from dotenv import load_dotenv
@@ -41,6 +42,7 @@ from src.schema import (
     append_record_jsonl,
     get_completed_sample_ids,
 )
+from src.utils.logger import setup_logger
 
 
 def load_yaml(path: str | Path) -> Dict[str, Any]:
@@ -165,9 +167,14 @@ def execute_with_retry(
             last_err = exc
             if attempt < max_retries:
                 sleep_sec = backoff_base_sec * (2 ** (attempt - 1))
-                print(
-                    f"    [WARN] Attempt {attempt}/{max_retries} failed ({type(exc).__name__}: {exc}). "
-                    f"Retrying in {sleep_sec}s..."
+                logger.warning(
+                    "[%s] Attempt %d/%d failed (%s: %s). Retrying in %ds...",
+                    sample_id,
+                    attempt,
+                    max_retries,
+                    type(exc).__name__,
+                    exc,
+                    sleep_sec,
                 )
                 time.sleep(sleep_sec)
 
@@ -182,7 +189,13 @@ def run_batch(
     target_models: List[str] | None = None,
     inter_call_delay_sec: float = 1.0,
 ) -> None:
-    load_dotenv()
+    load_dotenv()  # Load environment variables from .env file (for API keys)
+    # Setup unified logger for this batch run
+    logger = setup_logger(
+            name=f"ai_audit.{batch_name}",
+            log_dir="logs",
+            log_filename=f"{batch_name}_execution.log",
+        )    
 
     prompts_cfg = load_yaml(prompts_cfg_path)
     models_cfg = load_yaml(models_cfg_path)
@@ -204,6 +217,17 @@ def run_batch(
         if not models:
             raise ValueError(f"No matching models found for filter: {target_models}")
 
+    logger.info(
+            "Batch started | batch=%s | n=%d | models=%s | timeout=%ds | max_retries=%d",
+            batch_name,
+            n_iterations,
+            [m["model_short"] for m in models],
+            timeout_sec,
+            max_retries,
+    )
+
+    stats = {"completed": 0, "skipped": 0, "failed": 0}
+
     for model_spec in models:
         model_short = model_spec["model_short"]
         provider = model_spec["provider"]
@@ -213,7 +237,7 @@ def run_batch(
 
         api_key = os.getenv(api_key_env)
         if not api_key:
-            print(f"[SKIP] Missing environment variable {api_key_env} for {model_short}.")
+            logger.error("Missing environment variable %s for %s. Skipping model.", api_key_env, model_short)
             continue
 
         client = build_client(provider=provider, api_key=api_key, timeout_sec=timeout_sec)
@@ -229,7 +253,7 @@ def run_batch(
             ensure_ascii=False,
         )
 
-        print(f"\n=== Model: {model_spec['display_name']} ({model_id}) -> {output_jsonl} ===")
+        logger.info("=== Model: %s (%s) -> %s ===", model_spec["display_name"], model_id, output_jsonl)
 
         for task_id, task_spec in tasks.items():
             task_short = task_spec["task_short"]
@@ -239,10 +263,11 @@ def run_batch(
                 sample_id = f"{task_short}_{model_short}_{iteration:03d}"
 
                 if sample_id in completed_ids:
-                    print(f"  [RESUME-SKIP] {sample_id} already completed.")
+                    stats["skipped"] += 1
+                    logger.info("  [RESUME-SKIP] %s already completed.", sample_id)
                     continue
 
-                print(f"  [RUN] {sample_id} ...", end=" ", flush=True)
+                logger.info("  [RUN] %s ...", sample_id)
                 try:
                     raw_output, latency = execute_with_retry(
                         provider=provider,
@@ -252,6 +277,8 @@ def run_batch(
                         native_params=native_params,
                         max_retries=max_retries,
                         backoff_base_sec=backoff_base_sec,
+                        logger=logger,
+                        sample_id=sample_id
                     )
 
                     record = AuditRecord(
@@ -267,9 +294,16 @@ def run_batch(
                         raw_output=raw_output,
                     )
                     append_record_jsonl(record, output_jsonl)
-                    print(f"OK ({latency:.2f}s, {record.word_count} words)")
+                    stats["completed"] += 1
+                    logger.info(
+                        "[%s] SUCCESS | latency=%.2fs | words=%d",
+                        sample_id,
+                        latency,
+                        record.word_count,
+                    )
 
                 except Exception as exc:  # noqa: BLE001
+                    stats["failed"] += 1
                     fail_record = AuditRecord(
                         sample_id=sample_id,
                         task_id=task_id,
@@ -284,10 +318,22 @@ def run_batch(
                         adjudication_notes=f"API_ERROR: {exc}",
                     )
                     append_record_jsonl(fail_record, fail_log_path)
-                    print(f"FAILED -> logged to {fail_log_path}")
+                    logger.error(
+                        "[%s] FAILED -> logged to %s",
+                        sample_id,
+                        fail_log_path,
+                        exc_info=True,
+                    )
 
                 if inter_call_delay_sec > 0:
                     time.sleep(inter_call_delay_sec)
+    logger.info(
+        "Batch finished | batch=%s | completed=%d | skipped=%d | failed=%d",
+        batch_name,
+        stats["completed"],
+        stats["skipped"],
+        stats["failed"],
+    )
 
 
 if __name__ == "__main__":
@@ -313,3 +359,4 @@ if __name__ == "__main__":
         target_models=args.models,
         inter_call_delay_sec=args.delay,
     )
+    # python -m src.api_execution.run_batch --n 15 --batch-name pilot_n15

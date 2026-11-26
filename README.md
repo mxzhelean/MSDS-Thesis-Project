@@ -90,7 +90,7 @@ gantt
 
     section Phase 1: Quantitative Core
     Pipeline Setup & Pilot Samples       :done,    2026-11-20, 2026-11-22
-    Revised Draft (15-20 Samples)        :active,  2026-11-23, 2026-11-25
+    Revised Draft (15 Samples)        :active,  2026-11-23, 2026-11-25
     Full Corpus Execution & Brief Report :         2026-11-26, 2026-11-29
 
     section Phase 2: Synthesis & Defense

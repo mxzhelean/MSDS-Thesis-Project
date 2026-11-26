@@ -158,7 +158,12 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+
+# Logs
 logs/*.log
+logs/*.jsonl
+!logs/.gitkeep
+
 
 # VS Code
 .vscode/
