@@ -21,16 +21,15 @@ from __future__ import annotations
 
 import argparse
 import json
+import logging
 import os
 import time
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, List
-from venv import logger
 
 import yaml
 from dotenv import load_dotenv
-
 # Provider SDKs
 from anthropic import Anthropic
 from google import genai
@@ -142,6 +141,8 @@ def execute_with_retry(
     native_params: Dict[str, Any],
     max_retries: int,
     backoff_base_sec: int,
+    logger: logging.Logger,
+    sample_id: str,
 ) -> tuple[str, float]:
     """Execute a stateless API call with exponential backoff on transient failures."""
     last_err: Exception | None = None
@@ -189,7 +190,7 @@ def run_batch(
     target_models: List[str] | None = None,
     inter_call_delay_sec: float = 1.0,
 ) -> None:
-    load_dotenv()  # Load environment variables from .env file (for API keys)
+    load_dotenv(override=True)  # Load environment variables from .env file (for API keys)
     # Setup unified logger for this batch run
     logger = setup_logger(
             name=f"ai_audit.{batch_name}",
