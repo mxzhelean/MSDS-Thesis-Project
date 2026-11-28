@@ -64,7 +64,7 @@ timeline
 | __Nov 22__ | Pipeline setup report & pilot evaluation | ✅ Completed | `scripts/pipeline/`, pilot metric report |
 | __Nov 25__ | Revised draft with 15–20 data examples | ✅ Completed | Chapter 2–3 draft, pivot sample charts |
 | __Nov 29__ | Full pipeline execution & corpus results | 🔄 In Progress | Statistical outputs, table placeholders |
-| __Dec 01__ | Results chapter draft | ⏳ Queued | Draft Chapter 4 (Results) |
+| __Dec 01__ | Results chapter draft | 🔄 In Progress | Draft Chapter 4 (Results) |
 | __Dec 04__ | Full-picture draft submission | ⏳ Queued | Submission to Advisory Board |
 | __Dec 06__ | Presentation outline & code freeze | ⏳ Queued | Public reproducible release |
 | __Dec 10__ | Presentation slides draft | ⏳ Queued | Slide deck v1 |
