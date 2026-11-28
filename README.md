@@ -1,79 +1,18 @@
 # __A Task-Anchored Audit of Epistemic Enclosure in Higher Education LLMs__
 
-> Master's Thesis Project in Computing & Data Science  
+> __Master's Thesis Project__  
 > __Author:__ Mengxi (Elean) Zhong  
-> __Institution:__ Boston University
+> __Institution:__ Boston University, Faculty of Computing & Data Sciences  
+> __Advisory Board Target Defense:__ December 18, 2026
 
-This repository contains the complete computational pipeline, raw data corpora, and modular LaTeX source.
+[![Python 3.11](https://img.shields.io/badge/python-3.11-blue.svg)](https://www.python.org/downloads/release/python-3110/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Status](https://img.shields.io/badge/Stage-N=15%20Batch%20Validation-orange.svg)]()
+[![Overleaf Sync](https://img.shields.io/badge/Overleaf-Git%20Subtree-green.svg)]()
 
-The project adopts a modular, reproducible research architecture: the root directory manages data extraction, modeling, and analysis pipelines, while the nested `thesis/` directory manages the academic publication document synchronized with Overleaf.
+This repository hosts the computational audit pipeline, empirical corpora, evaluation benchmarks, and publication manuscript for auditing epistemic enclosure in foundation models deployed within higher education settings.
 
----
-
-## Repository Structure
-
-```text
-MSDS-Thesis-Project/
-├── README.md                      # Project Overview, environment setup & reproduction instructions
-├── requirements.txt               # Locked Python dependencies 
-├── .gitignore                     # Git rules for TeX build artifacts & Python caches
-├── LICENSE                        # Project MIT license
-├── configs/                       # Immutable baseline configurations & prompts
-│   ├── prompts_v1.0.json          # Locked symmetric Task 1 & Task 2 zero-shot prompts
-│   └── models_baseline.json       # Exact model snapshot IDs, native params & no-tool settings
-│
-├── docs/                          # [TBD] Methodological protocols & coding guidelines
-│   └── CODEBOOK.md                # Detailed Tier 1 & Tier 2B rubrics, decision trees & anchors
-│
-├── data/                          # Experimental dataset storage (gitignored except schema samples)
-│   ├── raw/                       # Append-only stateless API raw JSONL payloads
-│   │   ├── pilot_n15/             # Current N=15 batch validation (90 responses)
-│   │   └── full_n50/              # Full N=50 production run (300 responses)
-│   ├── processed/                 # Cleaned, Markdown-stripped texts & word-count metadata
-│   ├── annotations/               # Blinded coding sheets (Human Primary + LLM Cross-Audit)
-│   └── embeddings/                # Response-level dense sentence embeddings (.npy / .parquet)
-│
-├── src/                           # Computational pipeline & empirical scripts
-│   ├── api_execution/             # Automated stateless zero-shot API callers
-│   ├── preprocessing/             # Markdown strippers & text normalization
-│   ├── cross_audit/               # Deterministic (temp=0) LLM-as-a-Judge audit scripts
-│   ├── embeddings/                # Response-level sentence vector generators (Tier 2A)
-│   └── analytics/                 # Cosine distance/centroid variance (Tier 2A), QCA chi-square/KW & ICR (Tier 2B)
-│
-├── notebooks/                     # Exploratory Data Analysis & visual plots
-│   ├── 01_data_exploration.ipynb  # Summary statistics & token distributions
-│   ├── 02_semantic_variance.ipynb # Cosine distance variance analysis (Task 1 vs 2)
-│   └── 03_qca_and_icr_audit.ipynb # Tier 2B Shannon entropy, QCA proportions & Human-LLM Cohen's kappa
-│
-└── thesis/                        # Modular LaTeX source for the manuscript
-    ├── main.tex                   # Master entry point (Preamble & \include statements)
-    ├── references.bib             # BibLaTeX reference database (APA 7th Edition)
-    │
-    ├── config/                    # Global document styling
-    │   ├── packages.tex           # Package imports & dependency management
-    │   └── commands.tex           # Custom commands, macros & math operators
-    │
-    ├── frontmatter/               # Dissertation front matter
-    │   ├── titlepage.tex          # Formal title page
-    │   ├── abstract.tex           # Abstract (150–250 words)
-    │   ├── acknowledgments.tex    # Acknowledgments
-    │   └── abbreviations.tex      # List of Abbreviations (GTA, LLM, QCA, etc.)
-    │
-    ├── chapters/                  # Main manuscript body (Chapter-by-Chapter)
-    │   ├── ch01_introduction.tex  # Ch 1: Motivation, Problem Statement, RQs & H1/H2
-    │   ├── ch02_lit_review.tex    # Ch 2: Theoretical Framework & Literature Review
-    │   ├── ch03_methodology.tex   # Ch 3: Task Matrix & Computational Methodology
-    │   ├── ch04_results.tex       # Ch 4: Empirical Findings & Statistical Outputs
-    │   ├── ch05_discussion.tex    # Ch 5: Discussion, Theoretical Linkages & Limitations
-    │   └── ch06_conclusion.tex    # Ch 6: Conclusion, Policy & Future Extensions
-    │
-    └── appendices/                # Appendices & Supplementary Materials
-        ├── app_a_prompts.tex      # Appendix A: Zero-Shot Prompt Framing Templates
-        ├── app_b_params.tex       # Appendix B: Endpoint Decoding Hyperparameters
-        ├── app_c_raw_samples.tex  # Appendix C: Representative API JSON Payloads
-        ├── app_d_bertopic.tex     # Appendix D: BERTopic Cluster Keyword Detail Tables
-        └── app_e_stats.tex        # Appendix E: Complete Statistical ANOVA Tables
-```
+The project adopts a modular, reproducible research architecture. The design decouples empirical pipeline execution (`src/`, `data/`) from academic document synchronization (`thesis/`), ensuring reproducible data operations alongside Overleaf-integrated LaTeX compilation.
 
 ---
 
@@ -90,8 +29,8 @@ gantt
 
     section Phase 1: Quantitative Core
     Pipeline Setup & Pilot Samples       :done,    2026-11-20, 2026-11-22
-    Revised Draft (15 Samples)        :active,  2026-11-23, 2026-11-25
-    Full Corpus Execution & Brief Report :         2026-11-26, 2026-11-29
+    Revised Draft (15 Samples)        :done,  2026-11-23, 2026-11-25
+    Full Corpus Execution & Brief Report :active,         2026-11-26, 2026-11-29
 
     section Phase 2: Synthesis & Defense
     Results Chapter Assembly             :         2026-11-30, 2026-12-01
@@ -123,8 +62,8 @@ timeline
 | Target Date | Milestone / Objective | Status | Key Deliverables / Artifacts |
 | :--- | :--- | :---: | :--- |
 | __Nov 22__ | Pipeline setup report & pilot evaluation | ✅ Completed | `scripts/pipeline/`, pilot metric report |
-| __Nov 25__ | Revised draft with 15–20 data examples | 🔄 In Progress | Chapter 2–3 draft, pivot sample charts |
-| __Nov 29__ | Full pipeline execution & corpus results | ⏳ Queued | Statistical outputs, table placeholders |
+| __Nov 25__ | Revised draft with 15–20 data examples | ✅ Completed | Chapter 2–3 draft, pivot sample charts |
+| __Nov 29__ | Full pipeline execution & corpus results | 🔄 In Progress | Statistical outputs, table placeholders |
 | __Dec 01__ | Results chapter draft | ⏳ Queued | Draft Chapter 4 (Results) |
 | __Dec 04__ | Full-picture draft submission | ⏳ Queued | Submission to Advisory Board |
 | __Dec 06__ | Presentation outline & code freeze | ⏳ Queued | Public reproducible release |
@@ -134,62 +73,74 @@ timeline
 
 ---
 
-## Git & Overleaf Synchronization Workflow
+## Cross-Audit Pipeline Architecture
 
-This repository uses a __nested architecture__ where the root directory manages the entire data science project (`src/`, `data/`, pipelines), while the `thesis/` subfolder houses the modular LaTeX codebase synchronized with Overleaf.
+The study implements a dual-task audit comparing epistemic uniformity in foundational conceptual tasks (Task 1: KNN explanation) against sociotechnical divergent framing (Task 2: AI ethics project ideation).
+
+To ensure measurement reliability without manual subjective bias, data collection runs through a deterministic __LLM-as-a-Judge automated cross-audit loop__ paired with blinded human qualitative validation.
+
+### Operational Workflow
+
+```mermaid
+flowchart TD
+    subgraph DataCollection["1. Stateless Sampling Pipeline"]
+        A[Locked Baseline Prompts] --> B[Stateless API Callers\nGemini 4 / GPT / Claude]
+        B --> C[(Raw JSONL Payloads\nSession Reset / No Memory)]
+    end
+
+    subgraph Evaluation["2. Multi-Tier Evaluation Engine"]
+        C --> D[Preprocessing\nMarkdown & Formatting Stripped]
+        D --> E1[Tier 2A: Dense Embeddings\nResponse-level Vectors]
+        D --> E2[Tier 1: Checklist & Quality Rubric]
+        D --> E3[Tier 2B: Directed QCA\nStructural Harms vs Corporate Compliance]
+    end
+
+    subgraph CrossAudit["3. Automated Judge & Verification"]
+        E2 --> F[LLM-as-a-Judge\nDeterministic Temp=0 Audit]
+        E3 --> F
+        D --> G[Blinded Human Primary Coding]
+        F & G --> H[Inter-Coder Reliability Engine\nCohen's Kappa & Percent Agreement]
+    end
+
+    subgraph Analytics["4. Statistical Synthesis"]
+        E1 --> I[Pairwise Cosine Dispersion & Centroid Variance]
+        H --> J[Non-parametric Hypothesis Tests\nPearson Chi-Square & Kruskal-Wallis]
+        I & J --> K[LaTeX Tables & Publication Figures]
+    end
+```
+
+### Operational Highlights
+
+- __Stateless API Isolation:__ Each call runs as an independent session with tool grounding and synthetic personas disabled, capturing native probabilistic generation.
+
+- __Deterministic Judge Protocol:__ The automated evaluator runs zero-temperature audits against structured rubric anchors, eliminating scoring drift across batch runs.
+
+- __Dual-Track Verification:__ Blinded primary human annotations are cross-evaluated against the LLM judge to track Cohen's $\kappa$ agreement metrics directly before downstream statistical testing.
+
+> For detailed judge prompt templates, API timeout rules, and audit trail schemas, see the [Pipeline Operations Protocol](doc/pipeline_ops.md).
+---
+
+## High-Level Repository Architecture
+
+To maintain a clean working footprint, detailed file trees, schemas, and chapter mappings are offloaded to dedicated documentation.
+
+- Complete File Structure & Module Responsibilities: See [Project Architect](doc/architecture.md) for the exhaustive project tree and directory manifest.
+- Judge Specs & Fault Handling Runbook: See [Pipeline Operations Protocol](doc/pipeline_ops.md) for judge prompts, session resets, and retry policies. 
+- Rubric & Coding Decision Trees: See [Pedagogical Audit Codebook & Scoring Protocol](doc/codebook_v1.1.md) for Tier 1 checklists and Tier 2B QCA boundary definitions.
 
 ```text
-┌─────────────────────────────────────────────────────────────┐
-│                    GitHub Root Repository                   │
-│  ├── data/                                                  │
-│  ├── src/                                                   │
-│  └── thesis/ ─── (Git Subtree) ───► Overleaf Remote (main)  │
-└─────────────────────────────────────────────────────────────┘
-```
-
-### 1. Authentication Setup (Overleaf)
-
-Overleaf requires a Git Authentication Token for CLI operations.
-
-Go to Overleaf Account Settings $\rightarrow$ Git Authentication Tokens $\rightarrow$ Create Token.
-
-Configure the dual-remote locally:
-
-```bash
-git remote add overleaf https://git:<YOUR_OVERLEAF_TOKEN>@[git.overleaf.com/](https://git.overleaf.com/)<YOUR_PROJECT_ID>
-```
-
-### 2. Daily Development & Sync Operations
-
-📥 Pulling Thesis Updates from Overleaf
-
-To fetch and merge edits made directly in the Overleaf web editor into the local `thesis/` folder:
-
-```bash
-git subtree pull --prefix=thesis overleaf main --squash
-```
-
-📤 Pushing Local Thesis Changes to Overleaf
-
-To sync local LaTeX edits or newly generated experiment figures (`thesis/figures/`) up to Overleaf:
-
-```bash
-git subtree push --prefix=thesis overleaf main
-```
-
-🌐 Pushing Full Project to GitHub
-
-To archive the complete end-to-end project (code, data pipelines, and thesis subfiles):
-
-```bash
-git add .
-git commit -m "docs/results: update analysis pipeline and corresponding thesis chapters"
-git push origin main
+MSDS-Thesis-Project/
+├── configs/          # Locked zero-shot prompts and model endpoint decoding parameters
+├── docs/             # Protocols, detailed file manifests, and coding handbooks
+├── data/             # Stateless JSONL corpora, blinded annotations, and dense embeddings
+├── src/              # Python pipeline: API execution, embedding generators, LLM judge, analytics
+├── notebooks/        # Exploratory workflows, dispersion plots, and ICR audit notebooks
+└── thesis/           # Modular Overleaf-synchronized LaTeX dissertation source
 ```
 
 ---
 
-## Reproduction & Compilation Guide
+## Quickstart & Reproducibility Runbook
 
 ### 1. Environment Setup
 
@@ -234,22 +185,76 @@ If using VS Code with LaTeX Workshop, open `thesis/main.tex` and trigger `Build 
 
 > __Tip for Overleaf / Fast Iteration:__ To compile a single chapter in isolation while maintaining cross-references and page numbers, uncomment `\includeonly{chapters/ch03_methodology}` in `thesis/main.tex`.
 
-### 2. Running the Data Analysis Pipeline
+### 3. Configuration Credentials
 
-Ensure you have Python 3.10+ installed:
+Copy the environment template and insert your respective developer keys:
 
 ```bash
-# Clone the repository
-git clone https://github.com/your-username/master-thesis-epistemic-enclosure.git
-cd master-thesis-epistemic-enclosure
+cp .env.example .env
+```
 
-# Set up virtual environment and dependencies
-python3 -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
+Ensure `.env` contains valid credentials:
 
-# Run the complete analytical pipeline
-python src/main_pipeline.py
+```env
+OPENAI_API_KEY=your_openai_api_key_here
+ANTHROPIC_API_KEY=your_anthropic_api_key_here
+GEMINI_API_KEY=your_gemini_api_key_here
+```
+
+### 4. Run Pipeline Stages
+
+Execute the collection, evaluation, and statistical pipelines sequentially:
+
+```bash
+# Step 1: Collect stateless sample batches (N=15 validation or N=50 full)
+python -m src.api_execution.run_batch --config configs/models_baseline.json --batch pilot_n15
+
+# Step 2: Run deterministic LLM-as-a-Judge cross-audit
+python -m src.cross_audit.evaluate_judge --input data/raw/pilot_n15/ --rubric configs/rubric_tier1_tier2b.json
+
+# Step 3: Extract dense embeddings and compute Tier 2A dispersion
+python -m src.embeddings.generate_vectors --input data/processed/pilot_n15/
+python -m src.analytics.compute_dispersion --embeddings data/embeddings/
+
+# Step 4: Run hypothesis tests and generate manuscript artifact tables
+python -m src.analytics.run_statistical_tests --output thesis/tables/
+```
+
+---
+
+## Git & Overleaf Sync Workflow
+
+The nested `thesis/` folder synchronizes directly with Overleaf via `git subtree`:
+
+> Details see: [Synchronization Doc](doc/git_overleaf_workflow.md)
+
+```text
+┌─────────────────────────────────────────────────────────────┐
+│                    GitHub Root Repository                   │
+│  ├── data/                                                  │
+│  ├── src/                                                   │
+│  └── thesis/ ─── (Git Subtree) ───► Overleaf Remote (main)  │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### Pull Updates from Overleaf
+
+```bash
+git subtree pull --prefix=thesis overleaf main --squash
+```
+
+### Push Updates from Overleaf
+
+```bash
+git subtree push --prefix=thesis overleaf main
+```
+
+### Push Entire Project to Github
+
+```bash
+git add .
+git commit -m "feat(pipeline): complete cross-audit run and update chapter 4 tables"
+git push origin main
 ```
 
 ---
@@ -265,7 +270,7 @@ If you reference this dataset, codebase, or theoretical framework in your resear
   author  = {Zhong, Mengxi},
   title   = {A Task-Anchored Audit of Epistemic Enclosure in Higher Education {LLMs}},
   school  = {Boston University},
-  department = {Department of Computing & Data Science},
+  department = {Faculty of Computing \& Data Science},
   year    = {2026},
   month   = {September}
 }
